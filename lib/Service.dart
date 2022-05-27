@@ -3,13 +3,20 @@ import 'dart:ui';
 
 class AppColors {
   static const Color DARK_BLUE = Color(0xFF004267);
+  static const Color DARK_BLUE800 = Color(0xFF002E48);
   static const Color GREEN = Color(0xFF01DE89);
+  static const Color GREEN100 = Color(0xFFE1FBF1);
   static const Color BLUE = Color(0xFF1877F2);
   static const Color BLUELIGHT = Color(0xFF1DA1F2);
   static const Color WHITE = Color(0xFFFFFFFF);
   static const Color BLACK = Color(0xFF00283E);
   static const Color GREY = Color(0xFFE5E7EB);
+  static const Color GREY300 = Color(0xFFD1D5DB);
+  static const Color GREY400 = Color(0xFF9CA3AF);
+  static const Color GREY500 = Color(0xFF6B7280);
   static const Color GREY700 = Color(0xFF374151);
+  static const Color GREY800 = Color(0xFF1F2937);
+  static const Color GREY200 = Color(0xFFE5E7EB);
 }
 
 class AppString {

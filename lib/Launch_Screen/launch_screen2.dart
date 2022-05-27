@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../color.dart';
+import '../Service.dart';
 import 'launch_screen3.dart';
 
 class LaunchScreen2 extends StatefulWidget {
