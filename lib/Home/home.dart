@@ -1,8 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:repocket/Service.dart';
 
+import '../Devices/devices.dart';
+import '../Refer/refer.dart';
+import '../Setting/setting.dart';
 import 'homepage.dart';
+
+int index1 = 0;
+List screen = [
+  const HomePage(),
+  const ReferScrren(),
+  const Devices(),
+  const SettingScreeen(),
+];
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,56 +22,46 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List Screen = [
-    HomePage(),
-    Center(
-      child: Text('2'),
-    ),
-    Center(
-      child: Text('3'),
-    ),
-    Center(
-      child: Text('4'),
-    ),
-  ];
-
-  int index = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCFCFC),
-      body: Screen[index],
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        elevation: 2,
-        currentIndex: index,
-        onTap: (index) {
-          setState(() {
-            this.index = index;
-          });
-        },
-        backgroundColor: Colors.white,
-        unselectedItemColor: AppColors.GREY400,
-        selectedItemColor: AppColors.DARK_BLUE800,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        items: [
-          BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage('assest/ic_icon1.png'),
-                size: 20,
-              ),
-              label: 'Home'),
-          BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assest/ic_icon2.png')),
-              label: 'Referral'),
-          BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assest/ic_icon3.png')),
-              label: 'Devices'),
-          BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assest/ic_icon4.png')),
-              label: 'More'),
-        ],
+      backgroundColor: const Color(0xFFFCFCFC),
+      body: screen[index1],
+      bottomNavigationBar: Container(
+        height: 91,
+        decoration: BoxDecoration(border: Border.all(color: AppColors.GREY300)),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          elevation: 2,
+          currentIndex: index1,
+          onTap: (index) {
+            setState(() {
+              index1 = index;
+            });
+          },
+          backgroundColor: Colors.white,
+          unselectedItemColor: AppColors.GREY400,
+          selectedItemColor: AppColors.DARK_BLUE800,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          items: const [
+            BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage('assest/ic_icon1.png'),
+                  size: 20,
+                ),
+                label: 'Home'),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assest/ic_icon2.png')),
+                label: 'Referral'),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assest/ic_icon3.png')),
+                label: 'Devices'),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assest/ic_icon4.png')),
+                label: 'More'),
+          ],
+        ),
       ),
     );
   }

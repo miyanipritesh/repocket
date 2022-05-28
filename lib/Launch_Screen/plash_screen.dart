@@ -25,7 +25,7 @@ class _PlashScreenState extends State<PlashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.DARK_BLUE,
+      backgroundColor: AppColors.DARK_BLUE500,
       body: Center(
         child: Image.asset('assest/ic_logo.png'),
       ),

@@ -115,7 +115,7 @@ class _ForgotPassword2State extends State<ForgotPassword2> {
                         fontFamily: Appfont.Mukta,
                         fontSize: 15,
                         letterSpacing: -0.15,
-                        color: AppColors.DARK_BLUE),
+                        color: AppColors.DARK_BLUE500),
                   ),
                 ),
               ],

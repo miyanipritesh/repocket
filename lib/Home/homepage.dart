@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../Service.dart';
+import 'Notification/notification.dart';
+import 'Withdraw_Screen/withdraw.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -141,7 +144,15 @@ class _HomePageState extends State<HomePage> {
                       )
                     ],
                   ),
-                  Image.asset('assest/ic_notification.png')
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NotificationSCreen(),
+                            ));
+                      },
+                      child: Image.asset('assest/ic_notification.png'))
                 ],
               ),
             ),
@@ -266,75 +277,85 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Container(
-                        height: 83,
-                        decoration: BoxDecoration(
-                            color: Color(0xFF004267),
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 18,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 12,
-                                ),
-                                Image.asset(
-                                  'assest/ic_ps_icon1.png',
-                                  height: 40,
-                                  width: 40,
-                                ),
-                                SizedBox(
-                                  width: 12,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Reach \$20 to request payout',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily:
-                                              Appfont.SpaceGrotesk_medium,
-                                          fontSize: 15,
-                                          letterSpacing: -0.25,
-                                          color: AppColors.WHITE),
-                                    ),
-                                    Text(
-                                      '90% complete',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily:
-                                              Appfont.SpaceGrotesk_medium,
-                                          fontSize: 14,
-                                          letterSpacing: -0.25,
-                                          color: AppColors.GREY300),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 19,
-                            ),
-                            Container(
-                              width: 320,
-                              height: 6,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  /* color: AppColors.GREY300,*/
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topRight,
-                                      end: Alignment.topLeft,
-                                      colors: [
-                                        Color(0xFF0FA3B1),
-                                        Color(0xFF01DE89),
-                                        Color.fromRGBO(1, 222, 137, 0),
-                                      ])),
-                            ),
-                          ],
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => WithDrawScreen(),
+                              ));
+                        },
+                        child: Container(
+                          height: 83,
+                          decoration: BoxDecoration(
+                              color: Color(0xFF004267),
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 18,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                  Image.asset(
+                                    'assest/ic_ps_icon1.png',
+                                    height: 40,
+                                    width: 40,
+                                  ),
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Reach \$20 to request payout',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily:
+                                                Appfont.SpaceGrotesk_medium,
+                                            fontSize: 15,
+                                            letterSpacing: -0.25,
+                                            color: AppColors.WHITE),
+                                      ),
+                                      Text(
+                                        '90% complete',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily:
+                                                Appfont.SpaceGrotesk_medium,
+                                            fontSize: 14,
+                                            letterSpacing: -0.25,
+                                            color: AppColors.GREY300),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 19,
+                              ),
+                              Container(
+                                width: 320,
+                                height: 6,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    /* color: AppColors.GREY300,*/
+                                    gradient: LinearGradient(
+                                        begin: Alignment.topRight,
+                                        end: Alignment.topLeft,
+                                        colors: [
+                                          Color(0xFF0FA3B1),
+                                          Color(0xFF01DE89),
+                                          Color.fromRGBO(1, 222, 137, 0),
+                                        ])),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     )
@@ -350,7 +371,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 13),
               child: Container(
-                height: 504,
+                height: 525,
                 decoration: BoxDecoration(
                     color: AppColors.WHITE,
                     border: Border.all(color: Color(0xFFEFEFEF), width: 2),
@@ -552,12 +573,46 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    //----------------Weeklt container------------------//
                     SizedBox(
-                      height: 50,
+                      height: 22,
+                    ),
+                    //----------------Weeklt container------------------//
+                    Container(
+                      height: 25,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            CupertinoIcons.left_chevron,
+                            color: AppColors.GREEN,
+                          ),
+                          SizedBox(
+                            width: 25,
+                          ),
+                          Text(
+                            'Feb 28 - Mar 6',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontFamily: Appfont.SpaceGrotesk_medium,
+                                fontSize: 14,
+                                color: AppColors.GREY800,
+                                letterSpacing: -0.25),
+                          ),
+                          SizedBox(
+                            width: 25,
+                          ),
+                          Icon(
+                            CupertinoIcons.right_chevron,
+                            color: AppColors.GREEN,
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Container(
-                      height: 200,
+                      height: 210,
                       child: SfCartesianChart(
                           selectionType: SelectionType.cluster,
                           primaryXAxis: CategoryAxis(
@@ -569,6 +624,7 @@ class _HomePageState extends State<HomePage> {
                                 dataSource: chartData,
                                 color: Color(0xFF06AED5),
                                 enableTooltip: true,
+                                name: 'group1',
                                 selectionBehavior: _selectionBehavior,
                                 xValueMapper: (ChartData data, _) => data.x,
                                 yValueMapper: (ChartData data, _) => data.y1),
@@ -576,6 +632,7 @@ class _HomePageState extends State<HomePage> {
                                 dataSource: chartData,
                                 color: AppColors.GREEN,
                                 enableTooltip: true,
+                                name: 'group2',
                                 selectionBehavior: _selectionBehavior,
                                 xValueMapper: (ChartData data, _) => data.x,
                                 yValueMapper: (ChartData data, _) => data.y2),

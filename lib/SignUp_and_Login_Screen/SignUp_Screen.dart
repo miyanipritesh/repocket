@@ -419,7 +419,7 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
                       fontFamily: Appfont.Mukta,
                       fontSize: 15,
                       letterSpacing: -0.15,
-                      color: AppColors.DARK_BLUE),
+                      color: AppColors.DARK_BLUE500),
                 ),
               ),
             ],
