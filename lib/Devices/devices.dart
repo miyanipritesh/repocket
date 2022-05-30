@@ -50,86 +50,227 @@ class _DevicesState extends State<Devices> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Container(
-              constraints: BoxConstraints(
-                maxHeight: double.infinity,
-              ),
+              height: 290,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Color(0xFFEFEFEF), width: 2)),
-              child: Column(
-                children: List.generate(
-                  3,
-                  (index) => Container(
-                    height: 84,
-                    decoration: BoxDecoration(
-                        border: Border(
-                            top: BorderSide.none,
-                            left: BorderSide.none,
-                            right: BorderSide.none)),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 30,
-                        ),
-                        Image.asset('assest/ic_phone.png'),
-                        SizedBox(
-                          width: 16,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Yaesul’s Phone',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: Appfont.SpaceGrotesk_medium,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.GREY900,
-                                  letterSpacing: -0.25),
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  height: 8,
-                                  width: 8,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      color: AppColors.GREEN),
-                                ),
-                                SizedBox(
-                                  width: 4,
-                                ),
-                                Text(
-                                  'Active now',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: Appfont.Mukta_medium,
-                                      fontWeight: FontWeight.w500,
-                                      color: AppColors.GREEN700,
-                                      letterSpacing: -0.15),
-                                ),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  '3.3923 GB',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: Appfont.Mukta,
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColors.GREY500,
-                                      letterSpacing: -0.15),
-                                ),
-                              ],
-                            )
-                          ],
-                        )
-                      ],
-                    ),
+              child: Column(children: [
+                Container(
+                  height: 84,
+                  decoration: BoxDecoration(
+                      border: Border(
+                          top: BorderSide.none,
+                          left: BorderSide.none,
+                          right: BorderSide.none)),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 30,
+                      ),
+                      Image.asset('assest/ic_phone.png'),
+                      SizedBox(
+                        width: 16,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Yaesul’s Phone',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: Appfont.SpaceGrotesk_medium,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.GREY900,
+                                letterSpacing: -0.25),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                height: 8,
+                                width: 8,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: AppColors.GREEN),
+                              ),
+                              SizedBox(
+                                width: 4,
+                              ),
+                              Text(
+                                'Active now',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: Appfont.Mukta_medium,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.GREEN700,
+                                    letterSpacing: -0.15),
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                '3.3923 GB',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: Appfont.Mukta,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.GREY500,
+                                    letterSpacing: -0.15),
+                              ),
+                            ],
+                          )
+                        ],
+                      )
+                    ],
                   ),
                 ),
-              ),
+                Divider(
+                  color: Color(0xFFEFEFEF),
+                  thickness: 2,
+                ),
+                Container(
+                  height: 84,
+                  decoration: BoxDecoration(
+                      border: Border(
+                          top: BorderSide.none,
+                          left: BorderSide.none,
+                          right: BorderSide.none)),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 30,
+                      ),
+                      Image.asset('assest/ic_leptop.png'),
+                      SizedBox(
+                        width: 16,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Yaesul’s Phone',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: Appfont.SpaceGrotesk_medium,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.GREY900,
+                                letterSpacing: -0.25),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                height: 8,
+                                width: 8,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: AppColors.GREEN),
+                              ),
+                              SizedBox(
+                                width: 4,
+                              ),
+                              Text(
+                                'Active now',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: Appfont.Mukta_medium,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.GREEN700,
+                                    letterSpacing: -0.15),
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                '3.3923 GB',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: Appfont.Mukta,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.GREY500,
+                                    letterSpacing: -0.15),
+                              ),
+                            ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Color(0xFFEFEFEF),
+                  thickness: 2,
+                ),
+                Container(
+                  height: 84,
+                  decoration: BoxDecoration(
+                      border: Border(
+                          top: BorderSide.none,
+                          left: BorderSide.none,
+                          right: BorderSide.none)),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 30,
+                      ),
+                      Image.asset('assest/ic_phone.png'),
+                      SizedBox(
+                        width: 16,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Yaesul’s Phone',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: Appfont.SpaceGrotesk_medium,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.GREY900,
+                                letterSpacing: -0.25),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                height: 8,
+                                width: 8,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: AppColors.GREEN),
+                              ),
+                              SizedBox(
+                                width: 4,
+                              ),
+                              Text(
+                                'Active now',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: Appfont.Mukta_medium,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.GREEN700,
+                                    letterSpacing: -0.15),
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                '3.3923 GB',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: Appfont.Mukta,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.GREY500,
+                                    letterSpacing: -0.15),
+                              ),
+                            ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ]),
             ),
           ),
           SizedBox(

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/components/toggle/gf_toggle.dart';
 import 'package:getwidget/types/gf_toggle_type.dart';
 import 'package:repocket/Service.dart';
+import 'package:repocket/Setting/Feedback/feedback_screen1.dart';
+import 'package:repocket/Setting/Reset_Password/reset_password.dart';
+
+import 'Transition_history/transtion_list.dart';
 
 class SettingScreeen extends StatefulWidget {
   const SettingScreeen({Key? key}) : super(key: key);
@@ -118,14 +122,23 @@ class _SettingScreeenState extends State<SettingScreeen> {
                           SizedBox(
                             width: 5,
                           ),
-                          Text(
-                            'View transaction history',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontFamily: Appfont.Mukta_medium,
-                                fontSize: 15.5,
-                                color: AppColors.DARK_BLUE500,
-                                letterSpacing: -0.15),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => TranstionList(),
+                                  ));
+                            },
+                            child: Text(
+                              'View transaction history',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: Appfont.Mukta_medium,
+                                  fontSize: 15.5,
+                                  color: AppColors.DARK_BLUE500,
+                                  letterSpacing: -0.15),
+                            ),
                           ),
                         ],
                       ),
@@ -262,6 +275,13 @@ class _SettingScreeenState extends State<SettingScreeen> {
                       thickness: 2,
                     ),
                     ListTile(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ResetPassword(),
+                            ));
+                      },
                       contentPadding: EdgeInsets.only(right: 20, left: 16),
                       leading: Padding(
                         padding: const EdgeInsets.only(top: 5),
@@ -311,6 +331,13 @@ class _SettingScreeenState extends State<SettingScreeen> {
                 child: Column(
                   children: [
                     ListTile(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FeedBackScreen(),
+                            ));
+                      },
                       contentPadding: EdgeInsets.only(
                         right: 20,
                         left: 16,

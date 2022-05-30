@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:repocket/SignUp_and_Login_Screen/login.dart';
 
 import '../../Service.dart';
 import '../Service.dart';
@@ -199,7 +200,7 @@ class _Launch_Screen3State extends State<Launch_Screen3> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Text(
                   "Already have an account?",
                   style: TextStyle(
@@ -212,14 +213,23 @@ class _Launch_Screen3State extends State<Launch_Screen3> {
                 SizedBox(
                   width: 4,
                 ),
-                Text(
-                  "Log in",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontFamily: Appfont.Mukta,
-                      fontSize: 15,
-                      letterSpacing: -0.15,
-                      color: AppColors.GREEN),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(),
+                        ));
+                  },
+                  child: Text(
+                    "Log in",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontFamily: Appfont.Mukta,
+                        fontSize: 15,
+                        letterSpacing: -0.15,
+                        color: AppColors.GREEN),
+                  ),
                 ),
               ],
             ),

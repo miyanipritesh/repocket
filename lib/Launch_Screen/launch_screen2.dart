@@ -82,6 +82,7 @@ class _LaunchScreen2State extends State<LaunchScreen2> {
                         height: 400,
                         child: Text(
                           AppString.TERM,
+                          softWrap: true,
                           style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontFamily: Appfont.Mukta,
@@ -96,7 +97,7 @@ class _LaunchScreen2State extends State<LaunchScreen2> {
               ),
             ),
             SizedBox(
-              height: 75,
+              height: 65,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -116,7 +117,7 @@ class _LaunchScreen2State extends State<LaunchScreen2> {
                           builder: (context) => Launch_Screen3(),
                         ));
                   },
-                  child: const Text(
+                  child: Text(
                     'Continue',
                     style: TextStyle(
                         color: Color(0xFF573353),

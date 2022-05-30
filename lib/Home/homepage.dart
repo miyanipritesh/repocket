@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+import '../Refer/refer.dart';
 import '../Service.dart';
 import 'Notification/notification.dart';
 import 'Withdraw_Screen/withdraw.dart';
@@ -14,39 +16,45 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int currentchart = 0;
   late SelectionBehavior _selectionBehavior;
   late TooltipBehavior _tooltipBehavior;
   bool state = false;
   final List<ChartData> chartData = [
     ChartData(
       '02/28',
-      12,
-      10,
+      0.5,
+      0.7,
     ),
     ChartData(
       '03/01',
-      14,
-      11,
+      0.2,
+      0.8,
     ),
     ChartData(
       '03/02',
-      16,
-      10,
+      0.5,
+      0.4,
     ),
     ChartData(
       '03/03',
-      18,
-      16,
+      0.1,
+      0,
     ),
     ChartData(
-      '03/03',
-      18,
-      16,
+      '03/04',
+      0.9,
+      0.4,
     ),
     ChartData(
-      '03/03',
-      18,
-      16,
+      '03/05',
+      0.1,
+      0.8,
+    ),
+    ChartData(
+      '03/06',
+      0.1,
+      0.8,
     ),
   ];
   @override
@@ -340,19 +348,17 @@ class _HomePageState extends State<HomePage> {
                                 height: 19,
                               ),
                               Container(
-                                width: 320,
-                                height: 6,
+                                width: double.infinity,
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    /* color: AppColors.GREY300,*/
-                                    gradient: LinearGradient(
-                                        begin: Alignment.topRight,
-                                        end: Alignment.topLeft,
-                                        colors: [
-                                          Color(0xFF0FA3B1),
-                                          Color(0xFF01DE89),
-                                          Color.fromRGBO(1, 222, 137, 0),
-                                        ])),
+                                    borderRadius: BorderRadius.circular(12)),
+                                child: LinearPercentIndicator(
+                                  percent: 0.75,
+                                  width: 316,
+                                  linearGradient: LinearGradient(colors: [
+                                    Color(0xFF0FA3B1),
+                                    Color(0xFF01DE89),
+                                  ]),
+                                ),
                               ),
                             ],
                           ),
@@ -371,7 +377,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 13),
               child: Container(
-                height: 525,
+                height: 575,
                 decoration: BoxDecoration(
                     color: AppColors.WHITE,
                     border: Border.all(color: Color(0xFFEFEFEF), width: 2),
@@ -393,18 +399,27 @@ class _HomePageState extends State<HomePage> {
                                 borderRadius: BorderRadius.circular(8)),
                             child: ElevatedButton(
                                 style: ButtonStyle(
+                                    elevation: MaterialStateProperty.all(0),
                                     backgroundColor: MaterialStateProperty.all(
-                                        AppColors.GREEN)),
+                                        currentchart == 0
+                                            ? AppColors.GREEN
+                                            : AppColors.WHITE)),
                                 child: Text(
                                   'Weekly',
                                   style: TextStyle(
                                       fontSize: 14,
-                                      color: AppColors.DARK_BLUE800,
+                                      color: currentchart == 0
+                                          ? AppColors.DARK_BLUE800
+                                          : AppColors.GREY400,
                                       fontFamily: Appfont.SpaceGrotesk_medium,
                                       fontWeight: FontWeight.w500,
                                       letterSpacing: 1),
                                 ),
-                                onPressed: () {}),
+                                onPressed: () {
+                                  setState(() {
+                                    currentchart = 0;
+                                  });
+                                }),
                           ),
                           Container(
                             height: 36,
@@ -415,17 +430,25 @@ class _HomePageState extends State<HomePage> {
                                 style: ButtonStyle(
                                     elevation: MaterialStateProperty.all(0),
                                     backgroundColor: MaterialStateProperty.all(
-                                        AppColors.WHITE)),
+                                        currentchart == 1
+                                            ? AppColors.GREEN
+                                            : AppColors.WHITE)),
                                 child: Text(
                                   'Monthly',
                                   style: TextStyle(
                                       fontSize: 14,
-                                      color: AppColors.GREY400,
+                                      color: currentchart == 1
+                                          ? AppColors.DARK_BLUE800
+                                          : AppColors.GREY400,
                                       fontFamily: Appfont.SpaceGrotesk_medium,
                                       fontWeight: FontWeight.w500,
                                       letterSpacing: 1),
                                 ),
-                                onPressed: () {}),
+                                onPressed: () {
+                                  setState(() {
+                                    currentchart = 1;
+                                  });
+                                }),
                           ),
                         ],
                       ),
@@ -436,195 +459,375 @@ class _HomePageState extends State<HomePage> {
 
                     //----------------Weeklt container------------------//
 
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Container(
-                        height: 174,
-                        decoration: BoxDecoration(
-                            border:
-                                Border.all(color: Color(0xFfEFEFEF), width: 2),
-                            borderRadius: BorderRadius.circular(12),
-                            color: AppColors.WHITE),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 16,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                    currentchart == 0
+                        ? Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Container(
+                              height: 174,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Color(0xFfEFEFEF), width: 2),
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: AppColors.WHITE),
+                              child: Column(
                                 children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'This week',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily:
-                                                Appfont.SpaceGrotesk_medium,
-                                            fontSize: 14,
-                                            letterSpacing: -0.25,
-                                            color: AppColors.GREY800),
-                                      )
-                                    ],
+                                  SizedBox(
+                                    height: 16,
                                   ),
-                                  Column(
-                                    children: [
-                                      Text(
-                                        '+\$4.9328',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontFamily: Appfont.SpaceGrotesk,
-                                            fontSize: 24,
-                                            letterSpacing: 1,
-                                            color: AppColors.DARK_BLUE800),
-                                      ),
-                                      Text(
-                                        '1372.32MB shared',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: Appfont.Mukta_medium,
-                                            fontSize: 14,
-                                            letterSpacing: -0.15,
-                                            color: AppColors.GREY500),
-                                      ),
-                                    ],
-                                  )
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              'This week',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: Appfont
+                                                      .SpaceGrotesk_medium,
+                                                  fontSize: 14,
+                                                  letterSpacing: -0.25,
+                                                  color: AppColors.GREY800),
+                                            )
+                                          ],
+                                        ),
+                                        Column(
+                                          children: [
+                                            Text(
+                                              '+\$4.9328',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                  fontFamily:
+                                                      Appfont.SpaceGrotesk,
+                                                  fontSize: 24,
+                                                  letterSpacing: 1,
+                                                  color:
+                                                      AppColors.DARK_BLUE800),
+                                            ),
+                                            Text(
+                                              '1372.32MB shared',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily:
+                                                      Appfont.Mukta_medium,
+                                                  fontSize: 14,
+                                                  letterSpacing: -0.15,
+                                                  color: AppColors.GREY500),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 9,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Divider(
+                                      color: Color(0xFFEFEFEF),
+                                      thickness: 2,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Bandwidth earnings:',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: Appfont.Mukta,
+                                              fontSize: 15.5,
+                                              letterSpacing: -0.15,
+                                              color: AppColors.GREY500),
+                                        ),
+                                        Text(
+                                          '\$10.0221',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: Appfont.Mukta_medium,
+                                              fontSize: 16,
+                                              letterSpacing: 1,
+                                              color: AppColors.GREY700),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Referral earnings:',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: Appfont.Mukta,
+                                              fontSize: 15.5,
+                                              letterSpacing: -0.15,
+                                              color: AppColors.GREY500),
+                                        ),
+                                        Text(
+                                          '\$9.0221',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: Appfont.Mukta_medium,
+                                              fontSize: 16,
+                                              letterSpacing: 1,
+                                              color: AppColors.GREY700),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 13,
+                                  ),
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              height: 9,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Divider(
-                                color: Color(0xFFEFEFEF),
-                                thickness: 2,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Container(
+                              height: 174,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Color(0xFfEFEFEF), width: 2),
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: AppColors.WHITE),
+                              child: Column(
                                 children: [
-                                  Text(
-                                    'Bandwidth earnings:',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: Appfont.Mukta,
-                                        fontSize: 15.5,
-                                        letterSpacing: -0.15,
-                                        color: AppColors.GREY500),
+                                  SizedBox(
+                                    height: 16,
                                   ),
-                                  Text(
-                                    '\$10.0221',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontFamily: Appfont.Mukta_medium,
-                                        fontSize: 16,
-                                        letterSpacing: 1,
-                                        color: AppColors.GREY700),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              'This month',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: Appfont
+                                                      .SpaceGrotesk_medium,
+                                                  fontSize: 14,
+                                                  letterSpacing: -0.25,
+                                                  color: AppColors.GREY800),
+                                            )
+                                          ],
+                                        ),
+                                        Column(
+                                          children: [
+                                            Text(
+                                              '+\$49.9328',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                  fontFamily:
+                                                      Appfont.SpaceGrotesk,
+                                                  fontSize: 24,
+                                                  letterSpacing: 1,
+                                                  color:
+                                                      AppColors.DARK_BLUE800),
+                                            ),
+                                            Text(
+                                              '11372.32MB shared',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily:
+                                                      Appfont.Mukta_medium,
+                                                  fontSize: 14,
+                                                  letterSpacing: -0.15,
+                                                  color: AppColors.GREY500),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 9,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Divider(
+                                      color: Color(0xFFEFEFEF),
+                                      thickness: 2,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Bandwidth earnings:',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: Appfont.Mukta,
+                                              fontSize: 15.5,
+                                              letterSpacing: -0.15,
+                                              color: AppColors.GREY500),
+                                        ),
+                                        Text(
+                                          '\$10.0221',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: Appfont.Mukta_medium,
+                                              fontSize: 16,
+                                              letterSpacing: 1,
+                                              color: AppColors.GREY700),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Referral earnings:',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: Appfont.Mukta,
+                                              fontSize: 15.5,
+                                              letterSpacing: -0.15,
+                                              color: AppColors.GREY500),
+                                        ),
+                                        Text(
+                                          '\$9.0221',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: Appfont.Mukta_medium,
+                                              fontSize: 16,
+                                              letterSpacing: 1,
+                                              color: AppColors.GREY700),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 13,
                                   ),
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Referral earnings:',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: Appfont.Mukta,
-                                        fontSize: 15.5,
-                                        letterSpacing: -0.15,
-                                        color: AppColors.GREY500),
-                                  ),
-                                  Text(
-                                    '\$9.0221',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontFamily: Appfont.Mukta_medium,
-                                        fontSize: 16,
-                                        letterSpacing: 1,
-                                        color: AppColors.GREY700),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 13,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                          ),
                     SizedBox(
                       height: 22,
                     ),
                     //----------------Weeklt container------------------//
-                    Container(
-                      height: 25,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            CupertinoIcons.left_chevron,
-                            color: AppColors.GREEN,
+                    currentchart == 0
+                        ? Container(
+                            height: 25,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  CupertinoIcons.left_chevron,
+                                  color: AppColors.GREEN,
+                                ),
+                                SizedBox(
+                                  width: 25,
+                                ),
+                                Text(
+                                  'Feb 28 - Mar 6',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w800,
+                                      fontFamily: Appfont.SpaceGrotesk_medium,
+                                      fontSize: 14,
+                                      color: AppColors.GREY800,
+                                      letterSpacing: -0.25),
+                                ),
+                                SizedBox(
+                                  width: 25,
+                                ),
+                                Icon(
+                                  CupertinoIcons.right_chevron,
+                                  color: AppColors.GREEN,
+                                ),
+                              ],
+                            ),
+                          )
+                        : Container(
+                            height: 25,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  CupertinoIcons.left_chevron,
+                                  color: AppColors.GREEN,
+                                ),
+                                SizedBox(
+                                  width: 25,
+                                ),
+                                Text(
+                                  'March 2022',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w800,
+                                      fontFamily: Appfont.SpaceGrotesk_medium,
+                                      fontSize: 14,
+                                      color: AppColors.GREY800,
+                                      letterSpacing: -0.25),
+                                ),
+                                SizedBox(
+                                  width: 25,
+                                ),
+                                Icon(
+                                  CupertinoIcons.right_chevron,
+                                  color: AppColors.GREEN,
+                                ),
+                              ],
+                            ),
                           ),
-                          SizedBox(
-                            width: 25,
-                          ),
-                          Text(
-                            'Feb 28 - Mar 6',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w800,
-                                fontFamily: Appfont.SpaceGrotesk_medium,
-                                fontSize: 14,
-                                color: AppColors.GREY800,
-                                letterSpacing: -0.25),
-                          ),
-                          SizedBox(
-                            width: 25,
-                          ),
-                          Icon(
-                            CupertinoIcons.right_chevron,
-                            color: AppColors.GREEN,
-                          ),
-                        ],
-                      ),
-                    ),
                     SizedBox(
                       height: 10,
                     ),
                     Container(
-                      height: 210,
+                      height: 230,
                       child: SfCartesianChart(
-                          selectionType: SelectionType.cluster,
-                          primaryXAxis: CategoryAxis(
-                            arrangeByIndex: true,
-                          ),
+                          enableAxisAnimation: true,
+                          primaryXAxis: CategoryAxis(),
+                          /* legend: Legend(
+                              isVisible: true,
+                              position: LegendPosition.bottom,
+                              image: AssetImage('assest/ic_dot.png')),*/
+
                           tooltipBehavior: _tooltipBehavior,
                           series: <ChartSeries>[
                             StackedColumnSeries<ChartData, String>(
                                 dataSource: chartData,
+                                legendIconType: LegendIconType.image,
                                 color: Color(0xFF06AED5),
                                 enableTooltip: true,
-                                name: 'group1',
+                                name: 'Bandwidth Earnings ',
                                 selectionBehavior: _selectionBehavior,
                                 xValueMapper: (ChartData data, _) => data.x,
                                 yValueMapper: (ChartData data, _) => data.y1),
@@ -632,11 +835,58 @@ class _HomePageState extends State<HomePage> {
                                 dataSource: chartData,
                                 color: AppColors.GREEN,
                                 enableTooltip: true,
-                                name: 'group2',
+                                name: 'Referral Earnings',
                                 selectionBehavior: _selectionBehavior,
                                 xValueMapper: (ChartData data, _) => data.x,
                                 yValueMapper: (ChartData data, _) => data.y2),
                           ]),
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          child: Row(
+                            children: [
+                              Image.asset('assest/ic_dot.png'),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                'Bandwidth Earnings ',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: Appfont.Mukta_medium,
+                                    fontSize: 16,
+                                    letterSpacing: -0.15,
+                                    color: AppColors.GREY600),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Container(
+                          child: Row(
+                            children: [
+                              Image.asset('assest/ic_dot1.png'),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                'Referral Earnings',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: Appfont.Mukta_medium,
+                                    fontSize: 16,
+                                    letterSpacing: -0.15,
+                                    color: AppColors.GREY600),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     )
                   ],
                 ),
@@ -886,34 +1136,149 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(
                               width: 14,
                             ),
-                            Container(
-                              height: 36,
-                              width: 143,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: AppColors.GREY300, width: 1),
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: AppColors.WHITE),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    'assest/ic_share.png',
-                                    color: AppColors.GREY500,
-                                  ),
-                                  SizedBox(
-                                    width: 6,
-                                  ),
-                                  Text(
-                                    'Share',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontFamily: Appfont.SpaceGrotesk_medium,
-                                        fontSize: 14,
-                                        letterSpacing: -0.25,
-                                        color: AppColors.GREY700),
-                                  ),
-                                ],
+                            InkWell(
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    builder: (ctx) => Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12)),
+                                          height: 325,
+                                          child: Column(
+                                            children: [
+                                              const SizedBox(
+                                                height: 33,
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 15),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    const Text(
+                                                      'Share your link to',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          fontFamily: Appfont
+                                                              .SpaceGrotesk,
+                                                          fontSize: 16,
+                                                          color:
+                                                              AppColors.GREY700,
+                                                          letterSpacing: -0.25),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 80,
+                                                    ),
+                                                    InkWell(
+                                                      onTap: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: const Icon(
+                                                        Icons.clear,
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 21,
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 15),
+                                                child: GridView.builder(
+                                                  itemCount: share.length,
+                                                  shrinkWrap: true,
+                                                  gridDelegate:
+                                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                                          crossAxisCount: 2,
+                                                          crossAxisSpacing: 12,
+                                                          mainAxisSpacing: 12,
+                                                          childAspectRatio:
+                                                              2 / 0.5),
+                                                  itemBuilder: (ctx, index) =>
+                                                      Container(
+                                                    height: 44,
+                                                    width: 166,
+                                                    decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                            color: AppColors
+                                                                .GREY300,
+                                                            width: 1),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                        color: AppColors.WHITE),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Image.asset(
+                                                          share[index].img,
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 10,
+                                                        ),
+                                                        Text(
+                                                          share[index].name,
+                                                          style: const TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontFamily: Appfont
+                                                                  .SpaceGrotesk_medium,
+                                                              fontSize: 14,
+                                                              letterSpacing:
+                                                                  -0.25,
+                                                              color: AppColors
+                                                                  .GREY700),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ));
+                              },
+                              child: Container(
+                                height: 36,
+                                width: 143,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: AppColors.GREY300, width: 1),
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: AppColors.WHITE),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      'assest/ic_share.png',
+                                      color: AppColors.GREY500,
+                                    ),
+                                    SizedBox(
+                                      width: 6,
+                                    ),
+                                    Text(
+                                      'Share',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily:
+                                              Appfont.SpaceGrotesk_medium,
+                                          fontSize: 14,
+                                          letterSpacing: -0.25,
+                                          color: AppColors.GREY700),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],

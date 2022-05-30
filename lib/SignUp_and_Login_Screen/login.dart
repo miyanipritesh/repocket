@@ -23,8 +23,12 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 26,
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 345),
-            child: Icon(Icons.arrow_back),
+            padding: EdgeInsets.only(right: 345),
+            child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(Icons.arrow_back)),
           ),
           SizedBox(
             height: 28,
