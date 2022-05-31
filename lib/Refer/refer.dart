@@ -1369,46 +1369,42 @@ class _ReferScrrenState extends State<ReferScrren> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        child: Row(
-                          children: [
-                            Image.asset('assest/ic_dot.png'),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              'Bandwidth Earnings ',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: Appfont.Mukta_medium,
-                                  fontSize: 16,
-                                  letterSpacing: -0.15,
-                                  color: AppColors.GREY600),
-                            ),
-                          ],
-                        ),
+                      Row(
+                        children: [
+                          Image.asset('assest/ic_dot.png'),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          const Text(
+                            'Bandwidth Earnings ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontFamily: Appfont.Mukta_medium,
+                                fontSize: 16,
+                                letterSpacing: -0.15,
+                                color: AppColors.GREY600),
+                          ),
+                        ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 12,
                       ),
-                      Container(
-                        child: Row(
-                          children: [
-                            Image.asset('assest/ic_dot1.png'),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              'Referral Earnings',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: Appfont.Mukta_medium,
-                                  fontSize: 16,
-                                  letterSpacing: -0.15,
-                                  color: AppColors.GREY600),
-                            ),
-                          ],
-                        ),
+                      Row(
+                        children: [
+                          Image.asset('assest/ic_dot1.png'),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          const Text(
+                            'Referral Earnings',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontFamily: Appfont.Mukta_medium,
+                                fontSize: 16,
+                                letterSpacing: -0.15,
+                                color: AppColors.GREY600),
+                          ),
+                        ],
                       ),
                     ],
                   )

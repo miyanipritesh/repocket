@@ -201,7 +201,7 @@ class _Launch_Screen3State extends State<Launch_Screen3> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "Already have an account?",
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
@@ -210,7 +210,7 @@ class _Launch_Screen3State extends State<Launch_Screen3> {
                       letterSpacing: -0.15,
                       color: AppColors.WHITE),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 4,
                 ),
                 InkWell(
@@ -218,10 +218,10 @@ class _Launch_Screen3State extends State<Launch_Screen3> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
+                          builder: (context) => const LoginScreen(),
                         ));
                   },
-                  child: Text(
+                  child: const Text(
                     "Log in",
                     style: TextStyle(
                         fontWeight: FontWeight.w500,

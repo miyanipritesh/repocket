@@ -19,11 +19,11 @@ class _SettingScreeenState extends State<SettingScreeen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCFCFC),
+      backgroundColor: const Color(0xFFFCFCFC),
       body: SafeArea(
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
@@ -36,7 +36,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: Color(0xFFE8E8E8),
+                      color: const Color(0xFFE8E8E8),
                     )),
                 child: Column(
                   children: [
@@ -48,7 +48,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            children: const [
                               Text(
                                 'Your ID',
                                 style: TextStyle(
@@ -75,10 +75,10 @@ class _SettingScreeenState extends State<SettingScreeen> {
                               Row(
                                 children: [
                                   Image.asset('assest/ic_watch.png'),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 9,
                                   ),
-                                  Text(
+                                  const Text(
                                     'Joined September 2021',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
@@ -92,10 +92,10 @@ class _SettingScreeenState extends State<SettingScreeen> {
                               Row(
                                 children: [
                                   Image.asset('assest/ic_ring.png'),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 9,
                                   ),
-                                  Text(
+                                  const Text(
                                     'Total 30GB shared',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
@@ -111,7 +111,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
@@ -119,7 +119,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                       child: Row(
                         children: [
                           Image.asset('assest/ic_doller.png'),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           GestureDetector(
@@ -127,10 +127,10 @@ class _SettingScreeenState extends State<SettingScreeen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => TranstionList(),
+                                    builder: (context) => const TranstionList(),
                                   ));
                             },
-                            child: Text(
+                            child: const Text(
                               'View transaction history',
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
@@ -150,11 +150,11 @@ class _SettingScreeenState extends State<SettingScreeen> {
 
             //---------------Transation Container----------------//
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             //---------------Setting Container----------------//
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
+            const Padding(
+              padding: EdgeInsets.only(left: 15),
               child: Text(
                 'Settings',
                 style: TextStyle(
@@ -165,18 +165,18 @@ class _SettingScreeenState extends State<SettingScreeen> {
                     letterSpacing: -0.25),
               ),
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
-                constraints: BoxConstraints(maxHeight: double.infinity),
+                constraints: const BoxConstraints(maxHeight: double.infinity),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Color(0xFFEFEFEF))),
+                    border: Border.all(color: const Color(0xFFEFEFEF))),
                 child: Column(
                   children: [
                     ListTile(
-                      contentPadding: EdgeInsets.only(
+                      contentPadding: const EdgeInsets.only(
                         right: 5,
                         left: 16,
                       ),
@@ -184,7 +184,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                         padding: const EdgeInsets.only(top: 5),
                         child: Image.asset('assest/ic_finger.png'),
                       ),
-                      title: Text(
+                      title: const Text(
                         'Login with Face ID/Touch ID',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -193,7 +193,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                             color: AppColors.GREY700,
                             letterSpacing: -0.25),
                       ),
-                      trailing: Container(
+                      trailing: SizedBox(
                         height: 35,
                         width: 55,
                         child: GFToggle(
@@ -206,17 +206,17 @@ class _SettingScreeenState extends State<SettingScreeen> {
                       ),
                       horizontalTitleGap: 0,
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xFFEFEFEF),
                       thickness: 2,
                     ),
                     ListTile(
-                      contentPadding: EdgeInsets.only(right: 5, left: 16),
+                      contentPadding: const EdgeInsets.only(right: 5, left: 16),
                       leading: Padding(
                         padding: const EdgeInsets.only(top: 5),
                         child: Image.asset('assest/ic_data.png'),
                       ),
-                      title: Text(
+                      title: const Text(
                         'Enable mobile data',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -225,7 +225,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                             color: AppColors.GREY700,
                             letterSpacing: -0.25),
                       ),
-                      trailing: Container(
+                      trailing: SizedBox(
                         height: 35,
                         width: 55,
                         child: GFToggle(
@@ -238,17 +238,17 @@ class _SettingScreeenState extends State<SettingScreeen> {
                       ),
                       horizontalTitleGap: 0,
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xFFEFEFEF),
                       thickness: 2,
                     ),
                     ListTile(
-                      contentPadding: EdgeInsets.only(right: 5, left: 16),
+                      contentPadding: const EdgeInsets.only(right: 5, left: 16),
                       leading: Padding(
                         padding: const EdgeInsets.only(top: 5),
                         child: Image.asset('assest/ic_battry.png'),
                       ),
-                      title: Text(
+                      title: const Text(
                         'Battery optimization',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -257,7 +257,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                             color: AppColors.GREY700,
                             letterSpacing: -0.25),
                       ),
-                      trailing: Container(
+                      trailing: SizedBox(
                         height: 35,
                         width: 55,
                         child: GFToggle(
@@ -270,7 +270,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                       ),
                       horizontalTitleGap: 0,
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xFFEFEFEF),
                       thickness: 2,
                     ),
@@ -279,15 +279,16 @@ class _SettingScreeenState extends State<SettingScreeen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ResetPassword(),
+                              builder: (context) => const ResetPassword(),
                             ));
                       },
-                      contentPadding: EdgeInsets.only(right: 20, left: 16),
+                      contentPadding:
+                          const EdgeInsets.only(right: 20, left: 16),
                       leading: Padding(
                         padding: const EdgeInsets.only(top: 5),
                         child: Image.asset('assest/ic_lock2.png'),
                       ),
-                      title: Text(
+                      title: const Text(
                         'Reset password',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -296,7 +297,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                             color: AppColors.GREY700,
                             letterSpacing: -0.25),
                       ),
-                      trailing: Icon(Icons.arrow_forward_ios),
+                      trailing: const Icon(Icons.arrow_forward_ios),
                       horizontalTitleGap: 0,
                     ),
                   ],
@@ -305,11 +306,11 @@ class _SettingScreeenState extends State<SettingScreeen> {
             ),
             //---------------Setting Container----------------//
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             //---------------Help Container----------------//
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
+            const Padding(
+              padding: EdgeInsets.only(left: 15),
               child: Text(
                 'Help',
                 style: TextStyle(
@@ -320,14 +321,14 @@ class _SettingScreeenState extends State<SettingScreeen> {
                     letterSpacing: -0.25),
               ),
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
-                constraints: BoxConstraints(maxHeight: double.infinity),
+                constraints: const BoxConstraints(maxHeight: double.infinity),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Color(0xFFEFEFEF))),
+                    border: Border.all(color: const Color(0xFFEFEFEF))),
                 child: Column(
                   children: [
                     ListTile(
@@ -335,10 +336,10 @@ class _SettingScreeenState extends State<SettingScreeen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FeedBackScreen(),
+                              builder: (context) => const FeedBackScreen(),
                             ));
                       },
-                      contentPadding: EdgeInsets.only(
+                      contentPadding: const EdgeInsets.only(
                         right: 20,
                         left: 16,
                       ),
@@ -348,7 +349,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                         ),
                         child: Image.asset('assest/ic_hart.png'),
                       ),
-                      title: Text(
+                      title: const Text(
                         'Send us your feedback',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -357,20 +358,21 @@ class _SettingScreeenState extends State<SettingScreeen> {
                             color: AppColors.GREY700,
                             letterSpacing: -0.25),
                       ),
-                      trailing: Icon(Icons.arrow_forward_ios),
+                      trailing: const Icon(Icons.arrow_forward_ios),
                       horizontalTitleGap: 0,
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xFFEFEFEF),
                       thickness: 2,
                     ),
                     ListTile(
-                      contentPadding: EdgeInsets.only(right: 20, left: 16),
+                      contentPadding:
+                          const EdgeInsets.only(right: 20, left: 16),
                       leading: Padding(
                         padding: const EdgeInsets.only(top: 5),
                         child: Image.asset('assest/ic_qua.png'),
                       ),
-                      title: Text(
+                      title: const Text(
                         'Help center',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -379,7 +381,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                             color: AppColors.GREY700,
                             letterSpacing: -0.25),
                       ),
-                      trailing: Container(
+                      trailing: SizedBox(
                           height: 20,
                           width: 20,
                           child: Image.asset(
@@ -388,17 +390,18 @@ class _SettingScreeenState extends State<SettingScreeen> {
                           )),
                       horizontalTitleGap: 0,
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xFFEFEFEF),
                       thickness: 2,
                     ),
                     ListTile(
-                      contentPadding: EdgeInsets.only(right: 20, left: 16),
+                      contentPadding:
+                          const EdgeInsets.only(right: 20, left: 16),
                       leading: Padding(
                         padding: const EdgeInsets.only(top: 5),
                         child: Image.asset('assest/ic_twitter2.png'),
                       ),
-                      title: Text(
+                      title: const Text(
                         'Twitter',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -407,7 +410,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                             color: AppColors.GREY700,
                             letterSpacing: -0.25),
                       ),
-                      trailing: Container(
+                      trailing: SizedBox(
                           height: 20,
                           width: 20,
                           child: Image.asset(
@@ -416,17 +419,18 @@ class _SettingScreeenState extends State<SettingScreeen> {
                           )),
                       horizontalTitleGap: 0,
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xFFEFEFEF),
                       thickness: 2,
                     ),
                     ListTile(
-                      contentPadding: EdgeInsets.only(right: 20, left: 16),
+                      contentPadding:
+                          const EdgeInsets.only(right: 20, left: 16),
                       leading: Padding(
                         padding: const EdgeInsets.only(top: 5),
                         child: Image.asset('assest/ic_discod2.png'),
                       ),
-                      title: Text(
+                      title: const Text(
                         'Discord',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -435,7 +439,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                             color: AppColors.GREY700,
                             letterSpacing: -0.25),
                       ),
-                      trailing: Container(
+                      trailing: SizedBox(
                           height: 20,
                           width: 20,
                           child: Image.asset(
@@ -450,11 +454,11 @@ class _SettingScreeenState extends State<SettingScreeen> {
             ),
             //---------------Help Container----------------//
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             //---------------Legal Container----------------//
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
+            const Padding(
+              padding: EdgeInsets.only(left: 15),
               child: Text(
                 'Legal',
                 style: TextStyle(
@@ -465,18 +469,18 @@ class _SettingScreeenState extends State<SettingScreeen> {
                     letterSpacing: -0.25),
               ),
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
-                constraints: BoxConstraints(maxHeight: double.infinity),
+                constraints: const BoxConstraints(maxHeight: double.infinity),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Color(0xFFEFEFEF))),
+                    border: Border.all(color: const Color(0xFFEFEFEF))),
                 child: Column(
                   children: [
                     ListTile(
-                      contentPadding: EdgeInsets.only(
+                      contentPadding: const EdgeInsets.only(
                         right: 20,
                         left: 16,
                       ),
@@ -486,7 +490,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                         ),
                         child: Image.asset('assest/ic_privicy.png'),
                       ),
-                      title: Text(
+                      title: const Text(
                         'Privacy policy',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -495,7 +499,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                             color: AppColors.GREY700,
                             letterSpacing: -0.25),
                       ),
-                      trailing: Container(
+                      trailing: SizedBox(
                           height: 20,
                           width: 20,
                           child: Image.asset(
@@ -504,17 +508,18 @@ class _SettingScreeenState extends State<SettingScreeen> {
                           )),
                       horizontalTitleGap: 0,
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xFFEFEFEF),
                       thickness: 2,
                     ),
                     ListTile(
-                      contentPadding: EdgeInsets.only(right: 20, left: 16),
+                      contentPadding:
+                          const EdgeInsets.only(right: 20, left: 16),
                       leading: Padding(
                         padding: const EdgeInsets.only(top: 5),
                         child: Image.asset('assest/ic_privicy.png'),
                       ),
-                      title: Text(
+                      title: const Text(
                         'Terms of use',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -523,7 +528,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                             color: AppColors.GREY700,
                             letterSpacing: -0.25),
                       ),
-                      trailing: Container(
+                      trailing: SizedBox(
                           height: 20,
                           width: 20,
                           child: Image.asset(
@@ -538,19 +543,19 @@ class _SettingScreeenState extends State<SettingScreeen> {
             ),
 
             //---------------Legal Container----------------//
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             //--------------Sign Out Button-----------------//
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
-                constraints: BoxConstraints(maxHeight: double.infinity),
+                constraints: const BoxConstraints(maxHeight: double.infinity),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Color(0xFFEFEFEF))),
+                    border: Border.all(color: const Color(0xFFEFEFEF))),
                 child: ListTile(
-                  contentPadding: EdgeInsets.only(
+                  contentPadding: const EdgeInsets.only(
                     right: 20,
                     left: 16,
                   ),
@@ -560,7 +565,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                     ),
                     child: Image.asset('assest/ic_signOut.png'),
                   ),
-                  title: Text(
+                  title: const Text(
                     'Log out',
                     style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -569,7 +574,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                         color: Colors.red,
                         letterSpacing: -0.25),
                   ),
-                  trailing: Icon(Icons.arrow_forward_ios),
+                  trailing: const Icon(Icons.arrow_forward_ios),
                   horizontalTitleGap: 0,
                 ),
               ),

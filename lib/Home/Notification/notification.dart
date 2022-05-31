@@ -14,16 +14,16 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCFCFC),
+      backgroundColor: const Color(0xFFFCFCFC),
       body: SafeArea(
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 InkWell(
@@ -31,10 +31,10 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                       Navigator.pop(context);
                     },
                     child: Image.asset('assest/ic_back.png')),
-                SizedBox(
+                const SizedBox(
                   width: 117,
                 ),
-                Text(
+                const Text(
                   'Notification',
                   style: TextStyle(
                       fontSize: 15,
@@ -45,14 +45,14 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 13,
             ),
-            Divider(
+            const Divider(
               color: Color(0xFFE8E8E8),
               thickness: 2,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Padding(
@@ -61,21 +61,22 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                 height: 540,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Color(0xFFEFEFEF), width: 2)),
+                    border:
+                        Border.all(color: const Color(0xFFEFEFEF), width: 2)),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Container(
                       height: 80,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           border: Border(
                               bottom: BorderSide(
                                   color: Color(0xFFEFEFEF), width: 2))),
                       child: Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 16,
                           ),
                           Padding(
@@ -83,12 +84,12 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                             child:
                                 Image.asset('assest/ic_notificationicon1.png'),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 16,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            children: const [
                               Text(
                                 'Your referred user #YS03214\nsigned up',
                                 style: TextStyle(
@@ -114,27 +115,27 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                     ),
                     Container(
                       height: 84,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           border: Border(
                               bottom: BorderSide(
                                   color: Color(0xFFEFEFEF), width: 2))),
                       child: Column(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 16,
                           ),
                           Row(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 width: 16,
                               ),
                               Image.asset('assest/ic_notificationicon2.png'),
-                              SizedBox(
+                              const SizedBox(
                                 width: 16,
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children: const [
                                   Text(
                                     'New update: version 3.02',
                                     style: TextStyle(
@@ -155,10 +156,10 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 45,
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.arrow_forward,
                                 color: AppColors.GREY300,
                               )
@@ -169,18 +170,18 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                     ),
                     Container(
                       height: 125,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           border: Border(
                               bottom: BorderSide(
                                   color: Color(0xFFEFEFEF), width: 2))),
                       child: Column(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 16,
                           ),
                           Row(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 width: 16,
                               ),
                               Padding(
@@ -188,12 +189,12 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                                 child: Image.asset(
                                     'assest/ic_notificationicon3.png'),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 16,
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children: const [
                                   Text(
                                     'Check out our community\nfor quick supports, updates,\nand promotions ',
                                     style: TextStyle(
@@ -214,10 +215,10 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 22,
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.arrow_forward,
                                 color: AppColors.GREY300,
                               )
@@ -228,18 +229,18 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                     ),
                     Container(
                       height: 125,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           border: Border(
                               bottom: BorderSide(
                                   color: Color(0xFFEFEFEF), width: 2))),
                       child: Column(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 16,
                           ),
                           Row(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 width: 16,
                               ),
                               Padding(
@@ -247,12 +248,12 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                                 child: Image.asset(
                                     'assest/ic_notificationicon4.png'),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 16,
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children: const [
                                   Text(
                                     'Your referred user #GR03214\ncompleted their first payout. \$5\nbonus is added to your balance.',
                                     style: TextStyle(
@@ -278,11 +279,11 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: 103,
                       child: Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 16,
                           ),
                           Padding(
@@ -290,12 +291,12 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                             child:
                                 Image.asset('assest/ic_notificationicon5.png'),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 16,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            children: const [
                               SizedBox(
                                 height: 16,
                               ),
@@ -326,10 +327,10 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
-            Text(
+            const Text(
               'Load more',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -359,7 +360,7 @@ class _NotificationSCreenState extends State<NotificationSCreen> {
           selectedItemColor: AppColors.DARK_BLUE800,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assest/ic_icon1.png'),

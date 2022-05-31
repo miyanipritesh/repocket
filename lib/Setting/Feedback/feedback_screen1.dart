@@ -15,16 +15,16 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCFCFC),
+      backgroundColor: const Color(0xFFFCFCFC),
       body: SafeArea(
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 InkWell(
@@ -32,10 +32,10 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                       Navigator.pop(context);
                     },
                     child: Image.asset('assest/ic_back.png')),
-                SizedBox(
+                const SizedBox(
                   width: 125,
                 ),
-                Text(
+                const Text(
                   'Feedback',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -47,18 +47,18 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 13,
             ),
-            Divider(
+            const Divider(
               color: Color(0xFFE8E8E8),
               thickness: 2,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 "Share us your feedback",
                 textAlign: TextAlign.start,
@@ -70,11 +70,11 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                     letterSpacing: -0.25),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 4,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 "Experiencing an issue? Let us know so we can fix it! The information you provide is for long-term constructive feedback to help us improve our app. Thank you in advance for your help.",
                 textAlign: TextAlign.start,
@@ -86,7 +86,7 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                     letterSpacing: -0.25),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -99,7 +99,7 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                   child: TextField(
                     textAlignVertical: TextAlignVertical.bottom,
                     decoration: InputDecoration(
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                             fontSize: 15,
                             fontFamily: Appfont.Mukta,
                             fontWeight: FontWeight.w400,
@@ -112,7 +112,7 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                             borderRadius: BorderRadius.circular(8))),
                   )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 280,
             ),
             Padding(
@@ -122,7 +122,7 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FeedBackScreen2(),
+                        builder: (context) => const FeedBackScreen2(),
                       ));
                 },
                 child: Container(
@@ -136,7 +136,7 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                       ],
                       color: AppColors.GREEN,
                       borderRadius: BorderRadius.circular(8)),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "Submit",
                       style: TextStyle(
@@ -170,7 +170,7 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
           selectedItemColor: AppColors.DARK_BLUE800,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assest/ic_icon1.png'),

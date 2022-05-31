@@ -14,21 +14,21 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCFCFC),
+      backgroundColor: const Color(0xFFFCFCFC),
       body: ListView(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 26,
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 345),
+          const Padding(
+            padding: EdgeInsets.only(right: 345),
             child: Icon(Icons.arrow_back),
           ),
-          SizedBox(
+          const SizedBox(
             height: 28,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15),
+          const Padding(
+            padding: EdgeInsets.only(left: 15),
             child: Text(
               'Forgot password',
               style: TextStyle(
@@ -39,11 +39,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   color: AppColors.DARK_BLUE800),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15),
+          const Padding(
+            padding: EdgeInsets.only(left: 15),
             child: Text(
               'Enter the email associated with your account and we’ll send an email with instructions to reset your password.',
               style: TextStyle(
@@ -54,13 +54,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   color: AppColors.GREY700),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 28,
           ),
           //------- Email---------//
 
-          Padding(
-            padding: const EdgeInsets.only(left: 15),
+          const Padding(
+            padding: EdgeInsets.only(left: 15),
             child: Text(
               'Email',
               style: TextStyle(
@@ -71,7 +71,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   color: AppColors.GREY700),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 6,
           ),
           Padding(
@@ -84,9 +84,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 child: TextField(
                   textAlignVertical: TextAlignVertical.bottom,
                   decoration: InputDecoration(
-                      prefixIcon: ImageIcon(AssetImage('assest/ic_mail.png')),
+                      prefixIcon:
+                          const ImageIcon(AssetImage('assest/ic_mail.png')),
                       hintText: 'olivia@email.com',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           fontSize: 15,
                           fontFamily: Appfont.Mukta,
                           fontWeight: FontWeight.w400,
@@ -99,7 +100,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           borderRadius: BorderRadius.circular(8))),
                 )),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           //------- Email---------//
@@ -113,7 +114,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ForgotPassword2(),
+                      builder: (context) => const ForgotPassword2(),
                     ));
               },
               child: Container(
@@ -125,9 +126,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           blurRadius: 2,
                           color: const Color(0xFFF3F4F6).withOpacity(0.05))
                     ],
-                    color: Color(0xFFF3F4F6),
+                    color: const Color(0xFFF3F4F6),
                     borderRadius: BorderRadius.circular(8)),
-                child: Center(
+                child: const Center(
                   child: Text(
                     "Continue",
                     style: TextStyle(

@@ -11,6 +11,8 @@ class LaunchScreen2 extends StatefulWidget {
 }
 
 class _LaunchScreen2State extends State<LaunchScreen2> {
+  final ScrollController _controllerOne = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +22,12 @@ class _LaunchScreen2State extends State<LaunchScreen2> {
             image: DecorationImage(
                 image: AssetImage('assest/ic_bg.png'), fit: BoxFit.fill)),
         child: ListView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             const SizedBox(
               height: 64,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 20),
               child: Text(
                 AppString.LAUNCH_SCREEN2,
@@ -36,10 +38,10 @@ class _LaunchScreen2State extends State<LaunchScreen2> {
                     color: AppColors.WHITE),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 20),
               child: Text(
                 "Let’s start with our Terms of Use",
@@ -50,17 +52,17 @@ class _LaunchScreen2State extends State<LaunchScreen2> {
                     color: AppColors.GREY),
               ),
             ),
-            Container(
-              height: 500,
+            SizedBox(
+              height: 525,
               width: 323,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 20),
                     child: Text(
                       '1. Terms',
                       style: TextStyle(
@@ -70,25 +72,33 @@ class _LaunchScreen2State extends State<LaunchScreen2> {
                           color: AppColors.WHITE),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 20),
-                    child: SingleChildScrollView(
-                      physics: ScrollPhysics(),
-                      scrollDirection: Axis.vertical,
-                      child: Container(
-                        height: 400,
-                        child: Text(
-                          AppString.TERM,
-                          softWrap: true,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontFamily: Appfont.Mukta,
-                              fontSize: 15,
-                              letterSpacing: -0.15,
-                              color: AppColors.WHITE),
+                    child: SizedBox(
+                      height: 442,
+                      child: Scrollbar(
+                        isAlwaysShown: true,
+                        thickness: 7,
+                        trackVisibility: true,
+                        showTrackOnHover: true,
+                        controller: _controllerOne,
+                        child: const SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          child: Text(
+                            AppString.TERM,
+                            strutStyle: StrutStyle(
+                              forceStrutHeight: true,
+                            ),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontFamily: Appfont.Mukta,
+                                fontSize: 15,
+                                letterSpacing: -0.15,
+                                color: AppColors.WHITE),
+                          ),
                         ),
                       ),
                     ),
@@ -96,8 +106,8 @@ class _LaunchScreen2State extends State<LaunchScreen2> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 65,
+            const SizedBox(
+              height: 40,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -114,10 +124,10 @@ class _LaunchScreen2State extends State<LaunchScreen2> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Launch_Screen3(),
+                          builder: (context) => const Launch_Screen3(),
                         ));
                   },
-                  child: Text(
+                  child: const Text(
                     'Continue',
                     style: TextStyle(
                         color: Color(0xFF573353),

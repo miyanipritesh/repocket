@@ -14,18 +14,18 @@ class _ForgotPassword2State extends State<ForgotPassword2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCFCFC),
+      backgroundColor: const Color(0xFFFCFCFC),
       body: Center(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 108,
             ),
             Image.asset('assest/ic_checkrmail.png'),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
-            Text(
+            const Text(
               'Check your email',
               style: TextStyle(
                   fontSize: 24,
@@ -34,11 +34,11 @@ class _ForgotPassword2State extends State<ForgotPassword2> {
                   letterSpacing: -0.15,
                   color: AppColors.DARK_BLUE800),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
+            const Padding(
+              padding: EdgeInsets.only(left: 15, right: 15),
               child: Text(
                 'We have sent a password reset instructions to\n                                   your email',
                 style: TextStyle(
@@ -50,7 +50,7 @@ class _ForgotPassword2State extends State<ForgotPassword2> {
               ),
             ),
             //------- sign in button---------//
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             Container(
@@ -70,7 +70,7 @@ class _ForgotPassword2State extends State<ForgotPassword2> {
                       backgroundColor:
                           MaterialStateProperty.all(AppColors.GREEN)),
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     "Open email app",
                     style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -82,13 +82,13 @@ class _ForgotPassword2State extends State<ForgotPassword2> {
                 )),
 
             //------- sign in button---------//
-            SizedBox(
+            const SizedBox(
               height: 300,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "Did not receive it?",
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
@@ -97,7 +97,7 @@ class _ForgotPassword2State extends State<ForgotPassword2> {
                       letterSpacing: -0.15,
                       color: AppColors.GREY500),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 4,
                 ),
                 InkWell(
@@ -105,10 +105,10 @@ class _ForgotPassword2State extends State<ForgotPassword2> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ForgotPassword(),
+                          builder: (context) => const ForgotPassword(),
                         ));
                   },
-                  child: Text(
+                  child: const Text(
                     "Try another email address",
                     style: TextStyle(
                         fontWeight: FontWeight.w700,

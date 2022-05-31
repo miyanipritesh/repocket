@@ -14,16 +14,16 @@ class _ResetPassword2State extends State<ResetPassword2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCFCFC),
+      backgroundColor: const Color(0xFFFCFCFC),
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 InkWell(
@@ -31,10 +31,10 @@ class _ResetPassword2State extends State<ResetPassword2> {
                       Navigator.pop(context);
                     },
                     child: Image.asset('assest/ic_back.png')),
-                SizedBox(
+                const SizedBox(
                   width: 105,
                 ),
-                Text(
+                const Text(
                   'Reset password',
                   style: TextStyle(
                       fontSize: 16,
@@ -45,21 +45,21 @@ class _ResetPassword2State extends State<ResetPassword2> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 13,
             ),
-            Divider(
+            const Divider(
               color: Color(0xFFE8E8E8),
               thickness: 2,
             ),
-            SizedBox(
+            const SizedBox(
               height: 36,
             ),
             Image.asset('assest/ic_reset_password.png'),
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
-            Text(
+            const Text(
               "We sent a password reset link to olivia@email.com",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -69,7 +69,7 @@ class _ResetPassword2State extends State<ResetPassword2> {
                   color: AppColors.GREY800,
                   letterSpacing: -0.25),
             ),
-            SizedBox(
+            const SizedBox(
               height: 320,
             ),
             Padding(
@@ -79,7 +79,7 @@ class _ResetPassword2State extends State<ResetPassword2> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Home(),
+                        builder: (context) => const Home(),
                       ));
                 },
                 child: Container(
@@ -93,7 +93,7 @@ class _ResetPassword2State extends State<ResetPassword2> {
                       ],
                       color: AppColors.GREEN,
                       borderRadius: BorderRadius.circular(8)),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "Open email app",
                       style: TextStyle(
@@ -127,7 +127,7 @@ class _ResetPassword2State extends State<ResetPassword2> {
           selectedItemColor: AppColors.DARK_BLUE800,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assest/ic_icon1.png'),

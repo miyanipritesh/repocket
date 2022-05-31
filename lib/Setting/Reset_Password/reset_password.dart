@@ -15,16 +15,16 @@ class _ResetPasswordState extends State<ResetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCFCFC),
+      backgroundColor: const Color(0xFFFCFCFC),
       body: SafeArea(
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 InkWell(
@@ -32,10 +32,10 @@ class _ResetPasswordState extends State<ResetPassword> {
                       Navigator.pop(context);
                     },
                     child: Image.asset('assest/ic_back.png')),
-                SizedBox(
+                const SizedBox(
                   width: 105,
                 ),
-                Text(
+                const Text(
                   'Reset password',
                   style: TextStyle(
                       fontSize: 16,
@@ -46,18 +46,18 @@ class _ResetPasswordState extends State<ResetPassword> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 13,
             ),
-            Divider(
+            const Divider(
               color: Color(0xFFE8E8E8),
               thickness: 2,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 "We ll send you reset instructions via\nemail.",
                 textAlign: TextAlign.start,
@@ -69,7 +69,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                     letterSpacing: -0.25),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -82,9 +82,10 @@ class _ResetPasswordState extends State<ResetPassword> {
                   child: TextField(
                     textAlignVertical: TextAlignVertical.bottom,
                     decoration: InputDecoration(
-                        prefixIcon: ImageIcon(AssetImage('assest/ic_mail.png')),
+                        prefixIcon:
+                            const ImageIcon(AssetImage('assest/ic_mail.png')),
                         hintText: 'olivia@email.com',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                             fontSize: 15,
                             fontFamily: Appfont.Mukta,
                             fontWeight: FontWeight.w400,
@@ -97,7 +98,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                             borderRadius: BorderRadius.circular(8))),
                   )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 440,
             ),
             Padding(
@@ -107,7 +108,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ResetPassword2(),
+                        builder: (context) => const ResetPassword2(),
                       ));
                 },
                 child: Container(
@@ -121,7 +122,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                       ],
                       color: AppColors.GREEN,
                       borderRadius: BorderRadius.circular(8)),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "Reset password",
                       style: TextStyle(
@@ -155,7 +156,7 @@ class _ResetPasswordState extends State<ResetPassword> {
           selectedItemColor: AppColors.DARK_BLUE800,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assest/ic_icon1.png'),

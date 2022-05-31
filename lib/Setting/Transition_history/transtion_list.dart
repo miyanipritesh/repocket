@@ -23,16 +23,16 @@ class _TranstionListState extends State<TranstionList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCFCFC),
+      backgroundColor: const Color(0xFFFCFCFC),
       body: SafeArea(
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 InkWell(
@@ -40,10 +40,10 @@ class _TranstionListState extends State<TranstionList> {
                       Navigator.pop(context);
                     },
                     child: Image.asset('assest/ic_back.png')),
-                SizedBox(
+                const SizedBox(
                   width: 90,
                 ),
-                Text(
+                const Text(
                   'Transaction history',
                   style: TextStyle(
                       fontSize: 15,
@@ -54,14 +54,14 @@ class _TranstionListState extends State<TranstionList> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 13,
             ),
-            Divider(
+            const Divider(
               color: Color(0xFFE8E8E8),
               thickness: 2,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Padding(
@@ -69,10 +69,12 @@ class _TranstionListState extends State<TranstionList> {
               child: Column(
                 children: [
                   Container(
-                      constraints: BoxConstraints(maxHeight: double.infinity),
+                      constraints:
+                          const BoxConstraints(maxHeight: double.infinity),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Color(0xFFEFEFEF), width: 2),
+                        border: Border.all(
+                            color: const Color(0xFFEFEFEF), width: 2),
                       ),
                       child: Column(
                         children: List.generate(
@@ -81,7 +83,7 @@ class _TranstionListState extends State<TranstionList> {
                             children: [
                               ListTile(
                                 leading: Image.asset('assest/ic_payple.png'),
-                                title: Text(
+                                title: const Text(
                                   'Withdrawal to Paypal',
                                   style: TextStyle(
                                       fontSize: 16,
@@ -92,14 +94,14 @@ class _TranstionListState extends State<TranstionList> {
                                 ),
                                 subtitle: Text(
                                   date[index],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 15.5,
                                       fontFamily: Appfont.Mukta,
                                       fontWeight: FontWeight.w400,
                                       color: AppColors.GREY500,
                                       letterSpacing: -0.15),
                                 ),
-                                trailing: Text(
+                                trailing: const Text(
                                   '-\$20',
                                   style: TextStyle(
                                       fontSize: 16,
@@ -109,7 +111,7 @@ class _TranstionListState extends State<TranstionList> {
                                       letterSpacing: 1),
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 color: Color(0xFFEFEFEF),
                                 thickness: 2,
                               )
@@ -120,10 +122,10 @@ class _TranstionListState extends State<TranstionList> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
-            Text(
+            const Text(
               'Load more',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -153,7 +155,7 @@ class _TranstionListState extends State<TranstionList> {
           selectedItemColor: AppColors.DARK_BLUE800,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assest/ic_icon1.png'),

@@ -74,15 +74,15 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Text(
                   "${data.y1}",
-                  style: TextStyle(color: AppColors.WHITE),
+                  style: const TextStyle(color: AppColors.WHITE),
                 ),
                 Text(
                   "${data.y2}",
-                  style: TextStyle(color: AppColors.WHITE),
+                  style: const TextStyle(color: AppColors.WHITE),
                 ),
                 Text(
                   "${data.y1 + data.y2}",
-                  style: TextStyle(color: AppColors.WHITE),
+                  style: const TextStyle(color: AppColors.WHITE),
                 ),
               ],
             ),
@@ -96,11 +96,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCFCFC),
+      backgroundColor: const Color(0xFFFCFCFC),
       body: SafeArea(
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Padding(
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(6),
                                   color: AppColors.GREEN),
                             ),
-                            Text(
+                            const Text(
                               'ON',
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
@@ -138,10 +138,10 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
-                      Text(
+                      const Text(
                         'Gathering (Wi-Fi)',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -157,14 +157,14 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => NotificationSCreen(),
+                              builder: (context) => const NotificationSCreen(),
                             ));
                       },
                       child: Image.asset('assest/ic_notification.png'))
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Padding(
@@ -172,12 +172,13 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 height: 267,
                 decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xFfEFEFEF), width: 2),
+                    border:
+                        Border.all(color: const Color(0xFfEFEFEF), width: 2),
                     borderRadius: BorderRadius.circular(12),
                     color: AppColors.WHITE),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
@@ -185,14 +186,13 @@ class _HomePageState extends State<HomePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                              child: Row(
+                          Row(
                             children: [
                               Image.asset('assest/ic_Favicon.png'),
-                              SizedBox(
+                              const SizedBox(
                                 width: 4,
                               ),
-                              Text(
+                              const Text(
                                 'Balance',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
@@ -202,8 +202,8 @@ class _HomePageState extends State<HomePage> {
                                     color: AppColors.DARK_BLUE800),
                               )
                             ],
-                          )),
-                          Text(
+                          ),
+                          const Text(
                             '\$19.0333',
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
@@ -215,24 +215,24 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 13,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Divider(
                         color: Color(0xFFEFEFEF),
                         thickness: 2,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 13,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Text(
                             'Bandwidth earnings:',
                             style: TextStyle(
@@ -258,7 +258,7 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Text(
                             'Referral earnings:',
                             style: TextStyle(
@@ -280,7 +280,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 13,
                     ),
                     Padding(
@@ -290,22 +290,22 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => WithDrawScreen(),
+                                builder: (context) => const WithDrawScreen(),
                               ));
                         },
                         child: Container(
                           height: 83,
                           decoration: BoxDecoration(
-                              color: Color(0xFF004267),
+                              color: const Color(0xFF004267),
                               borderRadius: BorderRadius.circular(8)),
                           child: Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 18,
                               ),
                               Row(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 12,
                                   ),
                                   Image.asset(
@@ -313,13 +313,13 @@ class _HomePageState extends State<HomePage> {
                                     height: 40,
                                     width: 40,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 12,
                                   ),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: [
+                                    children: const [
                                       Text(
                                         'Reach \$20 to request payout',
                                         style: TextStyle(
@@ -344,17 +344,15 @@ class _HomePageState extends State<HomePage> {
                                   )
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 19,
                               ),
-                              Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12)),
+                              Flexible(
+                                flex: 2,
                                 child: LinearPercentIndicator(
-                                  percent: 0.75,
+                                  percent: 0.80,
                                   width: 316,
-                                  linearGradient: LinearGradient(colors: [
+                                  linearGradient: const LinearGradient(colors: [
                                     Color(0xFF0FA3B1),
                                     Color(0xFF01DE89),
                                   ]),
@@ -369,7 +367,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
 
@@ -380,11 +378,12 @@ class _HomePageState extends State<HomePage> {
                 height: 575,
                 decoration: BoxDecoration(
                     color: AppColors.WHITE,
-                    border: Border.all(color: Color(0xFFEFEFEF), width: 2),
+                    border:
+                        Border.all(color: const Color(0xFFEFEFEF), width: 2),
                     borderRadius: BorderRadius.circular(12)),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
@@ -453,7 +452,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
 
@@ -466,12 +465,12 @@ class _HomePageState extends State<HomePage> {
                               height: 174,
                               decoration: BoxDecoration(
                                   border: Border.all(
-                                      color: Color(0xFfEFEFEF), width: 2),
+                                      color: const Color(0xFfEFEFEF), width: 2),
                                   borderRadius: BorderRadius.circular(12),
                                   color: AppColors.WHITE),
                               child: Column(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 16,
                                   ),
                                   Padding(
@@ -482,7 +481,7 @@ class _HomePageState extends State<HomePage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
-                                          children: [
+                                          children: const [
                                             Text(
                                               'This week',
                                               style: TextStyle(
@@ -496,7 +495,7 @@ class _HomePageState extends State<HomePage> {
                                           ],
                                         ),
                                         Column(
-                                          children: [
+                                          children: const [
                                             Text(
                                               '+\$4.9328',
                                               style: TextStyle(
@@ -523,18 +522,18 @@ class _HomePageState extends State<HomePage> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 9,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 20),
                                     child: Divider(
                                       color: Color(0xFFEFEFEF),
                                       thickness: 2,
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 8,
                                   ),
                                   Padding(
@@ -543,7 +542,7 @@ class _HomePageState extends State<HomePage> {
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: [
+                                      children: const [
                                         Text(
                                           'Bandwidth earnings:',
                                           style: TextStyle(
@@ -571,7 +570,7 @@ class _HomePageState extends State<HomePage> {
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: [
+                                      children: const [
                                         Text(
                                           'Referral earnings:',
                                           style: TextStyle(
@@ -593,7 +592,7 @@ class _HomePageState extends State<HomePage> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 13,
                                   ),
                                 ],
@@ -606,12 +605,12 @@ class _HomePageState extends State<HomePage> {
                               height: 174,
                               decoration: BoxDecoration(
                                   border: Border.all(
-                                      color: Color(0xFfEFEFEF), width: 2),
+                                      color: const Color(0xFfEFEFEF), width: 2),
                                   borderRadius: BorderRadius.circular(12),
                                   color: AppColors.WHITE),
                               child: Column(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 16,
                                   ),
                                   Padding(
@@ -622,7 +621,7 @@ class _HomePageState extends State<HomePage> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
-                                          children: [
+                                          children: const [
                                             Text(
                                               'This month',
                                               style: TextStyle(
@@ -636,7 +635,7 @@ class _HomePageState extends State<HomePage> {
                                           ],
                                         ),
                                         Column(
-                                          children: [
+                                          children: const [
                                             Text(
                                               '+\$49.9328',
                                               style: TextStyle(
@@ -663,18 +662,18 @@ class _HomePageState extends State<HomePage> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 9,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 20),
                                     child: Divider(
                                       color: Color(0xFFEFEFEF),
                                       thickness: 2,
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 8,
                                   ),
                                   Padding(
@@ -683,7 +682,7 @@ class _HomePageState extends State<HomePage> {
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: [
+                                      children: const [
                                         Text(
                                           'Bandwidth earnings:',
                                           style: TextStyle(
@@ -711,7 +710,7 @@ class _HomePageState extends State<HomePage> {
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: [
+                                      children: const [
                                         Text(
                                           'Referral earnings:',
                                           style: TextStyle(
@@ -733,23 +732,23 @@ class _HomePageState extends State<HomePage> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 13,
                                   ),
                                 ],
                               ),
                             ),
                           ),
-                    SizedBox(
+                    const SizedBox(
                       height: 22,
                     ),
                     //----------------Weeklt container------------------//
                     currentchart == 0
-                        ? Container(
+                        ? SizedBox(
                             height: 25,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
+                              children: const [
                                 Icon(
                                   CupertinoIcons.left_chevron,
                                   color: AppColors.GREEN,
@@ -776,11 +775,11 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           )
-                        : Container(
+                        : SizedBox(
                             height: 25,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
+                              children: const [
                                 Icon(
                                   CupertinoIcons.left_chevron,
                                   color: AppColors.GREEN,
@@ -807,10 +806,10 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Container(
+                    SizedBox(
                       height: 230,
                       child: SfCartesianChart(
                           enableAxisAnimation: true,
@@ -825,7 +824,7 @@ class _HomePageState extends State<HomePage> {
                             StackedColumnSeries<ChartData, String>(
                                 dataSource: chartData,
                                 legendIconType: LegendIconType.image,
-                                color: Color(0xFF06AED5),
+                                color: const Color(0xFF06AED5),
                                 enableTooltip: true,
                                 name: 'Bandwidth Earnings ',
                                 selectionBehavior: _selectionBehavior,
@@ -845,46 +844,42 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          child: Row(
-                            children: [
-                              Image.asset('assest/ic_dot.png'),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                'Bandwidth Earnings ',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: Appfont.Mukta_medium,
-                                    fontSize: 16,
-                                    letterSpacing: -0.15,
-                                    color: AppColors.GREY600),
-                              ),
-                            ],
-                          ),
+                        Row(
+                          children: [
+                            Image.asset('assest/ic_dot.png'),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            const Text(
+                              'Bandwidth Earnings ',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: Appfont.Mukta_medium,
+                                  fontSize: 16,
+                                  letterSpacing: -0.15,
+                                  color: AppColors.GREY600),
+                            ),
+                          ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 12,
                         ),
-                        Container(
-                          child: Row(
-                            children: [
-                              Image.asset('assest/ic_dot1.png'),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Text(
-                                'Referral Earnings',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: Appfont.Mukta_medium,
-                                    fontSize: 16,
-                                    letterSpacing: -0.15,
-                                    color: AppColors.GREY600),
-                              ),
-                            ],
-                          ),
+                        Row(
+                          children: [
+                            Image.asset('assest/ic_dot1.png'),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            const Text(
+                              'Referral Earnings',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: Appfont.Mukta_medium,
+                                  fontSize: 16,
+                                  letterSpacing: -0.15,
+                                  color: AppColors.GREY600),
+                            ),
+                          ],
                         ),
                       ],
                     )
@@ -894,7 +889,7 @@ class _HomePageState extends State<HomePage> {
             ),
             //-------Mainchart Container----------//
 
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             //-------Community Container----------//
@@ -903,18 +898,18 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 height: 170,
                 width: 345,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assest/ic_bg2.png'))),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 24),
                   child: ListView(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      const Text(
                         'Join our community',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -923,10 +918,10 @@ class _HomePageState extends State<HomePage> {
                             letterSpacing: -0.25,
                             color: AppColors.WHITE),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
-                      Text(
+                      const Text(
                         'Get access to quick support, updates\nand promotions',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -935,7 +930,7 @@ class _HomePageState extends State<HomePage> {
                             letterSpacing: -0.15,
                             color: AppColors.WHITE),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       Padding(
@@ -958,10 +953,10 @@ class _HomePageState extends State<HomePage> {
                                     'assest/ic_twitter.png',
                                     color: AppColors.BLUELIGHT,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 6,
                                   ),
-                                  Text(
+                                  const Text(
                                     'Twitter',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
@@ -973,7 +968,7 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 14,
                             ),
                             Container(
@@ -991,10 +986,10 @@ class _HomePageState extends State<HomePage> {
                                     'assest/ic_discot.png',
                                     color: AppColors.BLUELIGHT,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 6,
                                   ),
-                                  Text(
+                                  const Text(
                                     'Discord',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
@@ -1016,7 +1011,7 @@ class _HomePageState extends State<HomePage> {
             ),
             //-------Community Container----------//
 
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             //-------Refer Container----------//
@@ -1026,18 +1021,18 @@ class _HomePageState extends State<HomePage> {
                 height: 364,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                         image: AssetImage('assest/ic_bg3.png'),
                         fit: BoxFit.fill)),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 24),
                   child: ListView(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      const Text(
                         'Refer friends and get 10%\nlifetime commission,\nplus \$5 bonus',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -1046,10 +1041,10 @@ class _HomePageState extends State<HomePage> {
                             letterSpacing: -0.25,
                             color: AppColors.WHITE),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
-                      Text(
+                      const Text(
                         'Everyone who joins using your\nreferral link gets \$5 signup bonus.\nYou get a lifetime 10% commission\nand a \$5 bonus on their first payout.',
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
@@ -1058,10 +1053,10 @@ class _HomePageState extends State<HomePage> {
                             letterSpacing: -0.15,
                             color: AppColors.GREY200),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
-                      Text(
+                      const Text(
                         'YOUR ERFERRAL LINK',
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -1070,7 +1065,7 @@ class _HomePageState extends State<HomePage> {
                             letterSpacing: 1,
                             color: AppColors.GREEN),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Padding(
@@ -1081,8 +1076,8 @@ class _HomePageState extends State<HomePage> {
                               border: Border.all(
                                   color: AppColors.DARK_BLUE800, width: 2),
                               borderRadius: BorderRadius.circular(6)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 16, top: 9),
+                          child: const Padding(
+                            padding: EdgeInsets.only(left: 16, top: 9),
                             child: Text(
                               'https://repocket.co/r/x7sh8',
                               style: TextStyle(
@@ -1095,7 +1090,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       Padding(
@@ -1118,10 +1113,10 @@ class _HomePageState extends State<HomePage> {
                                     'assest/ic_copy.png',
                                     color: AppColors.DARK_BLUE800,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 6,
                                   ),
-                                  Text(
+                                  const Text(
                                     'Copy',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
@@ -1133,7 +1128,7 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 14,
                             ),
                             InkWell(
@@ -1264,10 +1259,10 @@ class _HomePageState extends State<HomePage> {
                                       'assest/ic_share.png',
                                       color: AppColors.GREY500,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 6,
                                     ),
-                                    Text(
+                                    const Text(
                                       'Share',
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,

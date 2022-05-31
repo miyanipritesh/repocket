@@ -14,14 +14,14 @@ class _WithDrawRequestState extends State<WithDrawRequest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCFCFC),
+      backgroundColor: const Color(0xFFFCFCFC),
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Center(
+            const Center(
               child: Text(
                 'Withdraw',
                 style: TextStyle(
@@ -32,21 +32,21 @@ class _WithDrawRequestState extends State<WithDrawRequest> {
                     letterSpacing: -0.25),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 13,
             ),
-            Divider(
+            const Divider(
               color: Color(0xFFE8E8E8),
               thickness: 2,
             ),
-            SizedBox(
+            const SizedBox(
               height: 64,
             ),
             Image.asset('assest/ic_Viz.png'),
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
-            Text(
+            const Text(
               'Congratulations! Your withdrawal request has been received. ',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -56,10 +56,10 @@ class _WithDrawRequestState extends State<WithDrawRequest> {
                   color: AppColors.GREY800,
                   letterSpacing: -0.25),
             ),
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
-            Text(
+            const Text(
               'The process will be completed within 24 hours.',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -69,7 +69,7 @@ class _WithDrawRequestState extends State<WithDrawRequest> {
                   color: AppColors.GREY500,
                   letterSpacing: -0.15),
             ),
-            SizedBox(
+            const SizedBox(
               height: 235,
             ),
             Padding(
@@ -87,10 +87,10 @@ class _WithDrawRequestState extends State<WithDrawRequest> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Home(),
+                          builder: (context) => const Home(),
                         ));
                   },
-                  child: Text(
+                  child: const Text(
                     'Keep earning',
                     style: TextStyle(
                         fontSize: 15.5,
@@ -122,7 +122,7 @@ class _WithDrawRequestState extends State<WithDrawRequest> {
           selectedItemColor: AppColors.DARK_BLUE800,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assest/ic_icon1.png'),
