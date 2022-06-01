@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "601059191249",
+    "project_id": "repocket-c3827",
+    "storage_bucket": "repocket-c3827.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601059191249:android:ac48b965083477401ad8f0",
+        "android_client_info": {
+          "package_name": "com.example.repocket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "601059191249-h6bebs3u0qu0oj225eudbo44co8mqmel.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQaT1nU4qCh8XlHa_Y5DK_IGjVaYZEOsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "601059191249-h6bebs3u0qu0oj225eudbo44co8mqmel.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

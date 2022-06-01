@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:repocket/Service.dart';
 
-import 'launch_screen1.dart';
+import '../main2.dart';
 
 class PlashScreen extends StatefulWidget {
   const PlashScreen({Key? key}) : super(key: key);
@@ -18,8 +18,8 @@ class _PlashScreenState extends State<PlashScreen> {
     super.initState();
     Timer(
         const Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => const LaunchScreen1())));
+        () => Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (BuildContext context) => Main2())));
   }
 
   @override
