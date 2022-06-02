@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:repocket/Firebase/user_model.dart';
 
+import '../Home/home.dart';
 import '../SignUp_and_Login_Screen/SignUp_Screen.dart';
 
 class AuthenticationHelper {
@@ -11,30 +13,38 @@ class AuthenticationHelper {
   get user => _auth.currentUser;
 
 //SIGN UP METHOD
-  Future signUp({required String email, required String password}) async {
-    try {
+  Future signUp(
+          {required String email,
+          required String password,
+          required BuildContext context}) async =>
       await _auth
           .createUserWithEmailAndPassword(
             email: email,
             password: password,
           )
-          .then((value) => {Postdatatofirebase()});
-    } catch (e) {
-      if (e == 'weak-password') {
-      } else if (e == 'email-already-in-use') {}
-    }
-  }
+          .then((value) => {Postdatatofirebase(context: context)})
+          .catchError((e) {
+        Fluttertoast.showToast(msg: e!.message);
+      });
 
   //SIGN IN METHODJ
-  Future<String?> signIn(
-      {required String email, required String password}) async {
-    try {
-      await _auth
-          .signInWithEmailAndPassword(email: email, password: password)
-          .then((uid) => Fluttertoast.showToast(msg: 'Sign in succesfull'));
-    } on FirebaseAuthException catch (e) {
-      Fluttertoast.showToast(msg: e.code);
-    }
+  Future signIn(
+      {required String email,
+      required String password,
+      required BuildContext context}) async {
+    await _auth
+        .signInWithEmailAndPassword(email: email, password: password)
+        .then((uid) => {
+              Fluttertoast.showToast(msg: 'Sign in succesfull'),
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => Home(),
+                ),
+              )
+            })
+        .catchError((e) {
+      Fluttertoast.showToast(msg: e!.message);
+    });
   }
 
   //SIGN OUT METHOD
@@ -42,7 +52,21 @@ class AuthenticationHelper {
     await _auth.signOut();
   }
 
-  Postdatatofirebase() async {
+  //FORGETPASSWORD METHOD
+  Future resetPassord(
+      {required String email, required BuildContext context}) async {
+    await _auth
+        .sendPasswordResetEmail(email: email)
+        .then((value) => {
+              Fluttertoast.showToast(msg: "Reset link show in email"),
+              Navigator.pop(context)
+            })
+        .catchError((e) {
+      Fluttertoast.showToast(msg: e!.message);
+    });
+  }
+
+  Postdatatofirebase({required BuildContext context}) async {
     var firebaseFirestore = FirebaseFirestore.instance;
     UserModel usermodel =
         UserModel(email: user.email, firstName: name.text, uid: user.uid);
@@ -51,6 +75,13 @@ class AuthenticationHelper {
         .collection('user')
         .doc(user.uid)
         .set(usermodel.toMap());
-    Fluttertoast.showToast(msg: 'Create Account');
+    Fluttertoast.showToast(msg: 'Create Account SuccessFully');
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => Home(
+          user: usermodel,
+        ),
+      ),
+    );
   }
 }

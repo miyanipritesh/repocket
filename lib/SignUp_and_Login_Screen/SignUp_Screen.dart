@@ -1,11 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:repocket/Firebase/googlesign.dart';
+import 'package:repocket/Home/home.dart';
 import 'package:repocket/Service.dart';
 
 import '../Firebase/authnticationHelper.dart';
-import '../Home/home.dart';
+import '../Firebase/user_model.dart';
 import 'login.dart';
 
 TextEditingController name = TextEditingController();
@@ -18,6 +22,35 @@ class SignUpSCreen extends StatefulWidget {
 }
 
 class _SignUpSCreenState extends State<SignUpSCreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  Postdatatofirebase() async {
+    var firebaseFirestore = FirebaseFirestore.instance;
+    UserModel usermodel =
+        UserModel(email: user.email, firstName: name.text, uid: user.uid);
+
+    await firebaseFirestore
+        .collection('user')
+        .doc(user.uid)
+        .set(usermodel.toMap());
+    Fluttertoast.showToast(msg: 'Create Account SuccessFully');
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => Home(),
+        ),
+        (route) => false);
+  }
+
+  get user => _auth.currentUser;
+  Future signUp({required String email, required String password}) async =>
+      await _auth
+          .createUserWithEmailAndPassword(
+            email: email,
+            password: password,
+          )
+          .then((value) => {Postdatatofirebase()})
+          .catchError((e) {
+        Fluttertoast.showToast(msg: e!.message);
+      });
   late FocusNode _focusNode;
   late FocusNode _focusNode1;
   late FocusNode _focusNode2;
@@ -380,16 +413,10 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
                       backgroundColor:
                           MaterialStateProperty.all(Color(0xFFF3F4F6))),
                   onPressed: () {
-                    AuthenticationHelper()
-                        .signUp(email: email.text, password: password.text)
-                        .whenComplete(() =>
-                            Fluttertoast.showToast(msg: 'sign up seccesfully'));
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Home(),
-                        ),
-                        (route) => false);
+                    AuthenticationHelper().signUp(
+                        email: email.text,
+                        password: password.text,
+                        context: context);
                   },
                   child: Text(
                     "Sign up",
@@ -473,14 +500,33 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                    height: 44,
-                    width: 104,
-                    decoration: BoxDecoration(
-                        color: AppColors.WHITE,
-                        border: Border.all(color: AppColors.GREY300),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Center(child: Image.asset('assest/ic_google.png'))),
+                GestureDetector(
+                  onTap: () async {
+                    User? user =
+                        (await Authentication.googleSignIn(context: context))
+                            as User?;
+                    if (user != null) {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => Home(
+                            user: user,
+                          ),
+                        ),
+                      );
+                    } else {
+                      CircularProgressIndicator();
+                    }
+                  },
+                  child: Container(
+                      height: 44,
+                      width: 104,
+                      decoration: BoxDecoration(
+                          color: AppColors.WHITE,
+                          border: Border.all(color: AppColors.GREY300),
+                          borderRadius: BorderRadius.circular(8)),
+                      child:
+                          Center(child: Image.asset('assest/ic_google.png'))),
+                ),
                 Container(
                     height: 44,
                     width: 104,

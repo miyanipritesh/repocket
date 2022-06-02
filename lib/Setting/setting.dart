@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:getwidget/components/toggle/gf_toggle.dart';
 import 'package:getwidget/types/gf_toggle_type.dart';
-import 'package:repocket/Firebase/authnticationHelper.dart';
 import 'package:repocket/Service.dart';
 import 'package:repocket/Setting/Feedback/feedback_screen1.dart';
 import 'package:repocket/Setting/Reset_Password/reset_password.dart';
 import 'package:repocket/SignUp_and_Login_Screen/login.dart';
 
+import '../Firebase/googlesign.dart';
 import 'Transition_history/transtion_list.dart';
 
 class SettingScreeen extends StatefulWidget {
@@ -559,7 +559,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
                     border: Border.all(color: const Color(0xFFEFEFEF))),
                 child: ListTile(
                   onTap: () {
-                    AuthenticationHelper().signOut();
+                    Authentication.signOut(context: context);
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(

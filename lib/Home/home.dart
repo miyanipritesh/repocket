@@ -15,7 +15,7 @@ List screen = [
 ];
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({Key? key, user}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();

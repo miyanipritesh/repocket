@@ -1,7 +1,8 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
+import '../Firebase/authnticationHelper.dart';
 import '../Service.dart';
-import 'forgot_password2.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
@@ -11,6 +12,27 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
+  final valid = GlobalKey();
+  TextEditingController Resetpass = TextEditingController();
+  bool isvalid = false;
+  @override
+  void initState() {
+    Resetpass.addListener(() {
+      setState(() {
+        if (EmailValidator.validate(Resetpass.text)) {
+          setState(() {
+            isvalid = true;
+          });
+        } else
+          setState(() {
+            isvalid = false;
+          });
+        ;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,27 +103,41 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 decoration: BoxDecoration(
                     border: Border.all(width: 1, color: AppColors.GREY300),
                     borderRadius: BorderRadius.circular(5)),
-                child: TextField(
-                  textAlignVertical: TextAlignVertical.bottom,
-                  decoration: InputDecoration(
-                      prefixIcon:
-                          const ImageIcon(AssetImage('assest/ic_mail.png')),
-                      hintText: 'olivia@email.com',
-                      hintStyle: const TextStyle(
-                          fontSize: 15,
-                          fontFamily: Appfont.Mukta,
-                          fontWeight: FontWeight.w400,
-                          letterSpacing: -0.15,
-                          color: AppColors.GREY400),
-                      fillColor: AppColors.GREY300.withOpacity(0.01),
-                      filled: true,
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(8))),
+                child: Form(
+                  key: valid,
+                  child: TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    controller: Resetpass,
+                    onSaved: (value) {
+                      Resetpass.text = value!;
+                    },
+                    validator: (email) {
+                      if (email != null && !EmailValidator.validate(email)) {
+                        return;
+                      }
+                      return null;
+                    },
+                    textAlignVertical: TextAlignVertical.bottom,
+                    decoration: InputDecoration(
+                        prefixIcon:
+                            const ImageIcon(AssetImage('assest/ic_mail.png')),
+                        hintText: 'olivia@email.com',
+                        hintStyle: const TextStyle(
+                            fontSize: 15,
+                            fontFamily: Appfont.Mukta,
+                            fontWeight: FontWeight.w400,
+                            letterSpacing: -0.15,
+                            color: AppColors.GREY400),
+                        fillColor: AppColors.GREY300.withOpacity(0.01),
+                        filled: true,
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(8))),
+                  ),
                 )),
           ),
           const SizedBox(
-            height: 16,
+            height: 25,
           ),
           //------- Email---------//
 
@@ -109,26 +145,26 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ForgotPassword2(),
-                    ));
-              },
-              child: Container(
+            child: Container(
+                decoration: BoxDecoration(boxShadow: [
+                  BoxShadow(
+                      offset: Offset(0, 2),
+                      blurRadius: 2,
+                      color: Color(0xFFF3F4F6).withOpacity(0.05))
+                ], borderRadius: BorderRadius.circular(8)),
                 height: 52,
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          offset: const Offset(0, 2),
-                          blurRadius: 2,
-                          color: const Color(0xFFF3F4F6).withOpacity(0.05))
-                    ],
-                    color: const Color(0xFFF3F4F6),
-                    borderRadius: BorderRadius.circular(8)),
-                child: const Center(
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(0),
+                      backgroundColor: MaterialStateProperty.all(
+                          isvalid ? AppColors.GREEN : AppColors.GREY100)),
+                  onPressed: isvalid
+                      ? () {
+                          AuthenticationHelper().resetPassord(
+                              email: Resetpass.text.trim(), context: context);
+                          print('--------------------${Resetpass.text.trim()}');
+                        }
+                      : null,
                   child: Text(
                     "Continue",
                     style: TextStyle(
@@ -136,12 +172,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         fontFamily: Appfont.SpaceGrotesk_medium,
                         fontSize: 15,
                         letterSpacing: -0.25,
-                        color: AppColors.GREY400),
+                        color: isvalid
+                            ? AppColors.DARK_BLUE800
+                            : AppColors.GREY400),
                   ),
-                ),
-              ),
-            ),
-          ),
+                )),
+          )
 
           //------- sign in button---------//
         ],
