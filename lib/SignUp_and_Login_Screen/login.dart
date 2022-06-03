@@ -1,9 +1,12 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:repocket/SignUp_and_Login_Screen/forgot_password.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Firebase/authnticationHelper.dart';
+import '../Firebase/googlesign.dart';
+import '../Home/home.dart';
 import '../Service.dart';
 import 'SignUp_Screen.dart';
 
@@ -16,6 +19,10 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isvalid = false;
+  bool isvisible = false;
+  bool passwordvalid = true;
+  late FocusNode _focusNode1;
+  late FocusNode _focusNode2;
   TextEditingController email1 = TextEditingController();
   TextEditingController password = TextEditingController();
   bool checkValue = false;
@@ -35,8 +42,33 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       });
     });
+    setState(() {
+      _focusNode1 = FocusNode();
+      _focusNode2 = FocusNode();
+    });
+    password.addListener(() {
+      setState(() {
+        if (password.value.text.length <= 8) {
+          setState(() {
+            passwordvalid = false;
+          });
+        } else {
+          setState(() {
+            passwordvalid = true;
+          });
+        }
+      });
+    });
+
     getCredential();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _focusNode1.dispose();
+    _focusNode2.dispose();
+    super.dispose();
   }
 
   @override
@@ -94,14 +126,31 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                    height: 44,
-                    width: 104,
-                    decoration: BoxDecoration(
-                        color: AppColors.WHITE,
-                        border: Border.all(color: AppColors.GREY300),
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Center(child: Image.asset('assest/ic_google.png'))),
+                InkWell(
+                  onTap: () async {
+                    User? user =
+                        (await Authentication.googleSignIn(context: context))
+                            as User?;
+                    if (user != null) {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => Home(),
+                        ),
+                      );
+                    } else {
+                      CircularProgressIndicator();
+                    }
+                  },
+                  child: Container(
+                      height: 44,
+                      width: 104,
+                      decoration: BoxDecoration(
+                          color: AppColors.WHITE,
+                          border: Border.all(color: AppColors.GREY300),
+                          borderRadius: BorderRadius.circular(8)),
+                      child:
+                          Center(child: Image.asset('assest/ic_google.png'))),
+                ),
                 Container(
                     height: 44,
                     width: 104,
@@ -183,17 +232,45 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Container(
                   height: 43,
                   decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: AppColors.GREY300),
+                      boxShadow: _focusNode1.hasFocus
+                          ? isvalid
+                              ? [
+                                  const BoxShadow(
+                                      offset: Offset(0, 0),
+                                      spreadRadius: 2,
+                                      color:
+                                          Color.fromRGBO(115, 237, 190, 0.3)),
+                                ]
+                              : [
+                                  BoxShadow(
+                                      offset: Offset(0, 0),
+                                      spreadRadius: 2,
+                                      color:
+                                          Color.fromRGBO(225, 166, 165, 0.5)),
+                                ]
+                          : null,
+                      border: Border.all(
+                        width: 1,
+                        color: _focusNode1.hasFocus
+                            ? isvalid
+                                ? AppColors.GREEN
+                                : Colors.red
+                            : AppColors.GREY400,
+                      ),
                       borderRadius: BorderRadius.circular(5)),
                   child: TextFormField(
+                    focusNode: _focusNode1,
+                    onTap: _requestFocus1,
                     validator: (value) {
                       if (EmailValidator.validate(value!)) {}
                     },
                     controller: email1,
                     textAlignVertical: TextAlignVertical.bottom,
                     decoration: InputDecoration(
-                        prefixIcon:
-                            const ImageIcon(AssetImage('assest/ic_mail.png')),
+                        prefixIcon: ImageIcon(
+                          AssetImage('assest/ic_mail.png'),
+                          color: AppColors.GREY400,
+                        ),
                         hintText: 'olivia@email.com',
                         hintStyle: const TextStyle(
                             fontSize: 15,
@@ -201,7 +278,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontWeight: FontWeight.w400,
                             letterSpacing: -0.15,
                             color: AppColors.GREY400),
-                        fillColor: AppColors.GREY300.withOpacity(0.01),
+                        fillColor: AppColors.WHITE,
                         filled: true,
                         border: OutlineInputBorder(
                             borderSide: BorderSide.none,
@@ -234,15 +311,44 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Container(
                   height: 43,
                   decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: AppColors.GREY300),
+                      boxShadow: _focusNode2.hasFocus
+                          ? passwordvalid
+                              ? [
+                                  const BoxShadow(
+                                      offset: Offset(0, 0),
+                                      spreadRadius: 2,
+                                      color:
+                                          Color.fromRGBO(115, 237, 190, 0.3)),
+                                ]
+                              : [
+                                  BoxShadow(
+                                      offset: Offset(0, 0),
+                                      spreadRadius: 2,
+                                      color:
+                                          Color.fromRGBO(225, 166, 165, 0.5)),
+                                ]
+                          : null,
+                      border: Border.all(
+                        width: 1,
+                        color: _focusNode2.hasFocus
+                            ? passwordvalid
+                                ? AppColors.GREEN
+                                : Colors.red
+                            : AppColors.GREY400,
+                      ),
                       borderRadius: BorderRadius.circular(5)),
                   child: TextFormField(
+                    focusNode: _focusNode2,
+                    onTap: _requestFocus2,
                     controller: password,
+                    obscureText: isvisible,
                     autofillHints: [AutofillHints.password],
                     textAlignVertical: TextAlignVertical.bottom,
                     decoration: InputDecoration(
-                        prefixIcon:
-                            const ImageIcon(AssetImage('assest/ic_lock.png')),
+                        prefixIcon: const ImageIcon(
+                          AssetImage('assest/ic_lock.png'),
+                          color: AppColors.GREY400,
+                        ),
                         hintText: '●●●●●●●●',
                         hintStyle: const TextStyle(
                             fontSize: 15,
@@ -250,8 +356,18 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontWeight: FontWeight.w400,
                             letterSpacing: -0.15,
                             color: AppColors.GREY400),
-                        suffixIcon: const Icon(Icons.visibility_off),
-                        fillColor: AppColors.GREY300.withOpacity(0.01),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              isvisible = !isvisible;
+                            });
+                          },
+                          icon: Icon(isvisible
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                          color: AppColors.GREY400,
+                        ),
+                        fillColor: AppColors.WHITE,
                         filled: true,
                         border: OutlineInputBorder(
                             borderSide: BorderSide.none,
@@ -262,7 +378,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 6,
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 'Must be at least 8 characters',
@@ -271,7 +387,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     fontFamily: Appfont.Mukta_medium,
                     fontWeight: FontWeight.w500,
                     letterSpacing: -0.15,
-                    color: AppColors.GREY500),
+                    color: _focusNode2.hasFocus
+                        ? passwordvalid
+                            ? AppColors.GREY500
+                            : Colors.red
+                        : AppColors.GREY500),
               ),
             ),
 
@@ -285,12 +405,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(4)),
                       activeColor: AppColors.GREEN,
                       value: checkValue,
-                      onChanged: (value) async {
+                      onChanged: (value) {
+                        setState(() {
+                          checkValue = value!;
+                        });
                         setState(() async {
-                          setState(() {
-                            checkValue = value!;
-                          });
-
                           sharedPreferences1 =
                               await SharedPreferences.getInstance();
                           sharedPreferences1.setBool('check', value!);
@@ -298,7 +417,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           sharedPreferences1.setString(
                               'password', password.text);
                         });
-                        getCredential();
                       },
                     ),
                     const Text(
@@ -358,8 +476,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: ButtonStyle(
                       elevation: MaterialStateProperty.all(0),
                       backgroundColor: MaterialStateProperty.all(
-                          isvalid ? AppColors.GREEN : AppColors.GREY100)),
-                  onPressed: isvalid
+                          isvalid && passwordvalid
+                              ? AppColors.GREEN
+                              : AppColors.GREY100)),
+                  onPressed: isvalid && passwordvalid
                       ? () {
                           AuthenticationHelper().signIn(
                               email: email1.text,
@@ -374,7 +494,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontFamily: Appfont.SpaceGrotesk_medium,
                         fontSize: 15,
                         letterSpacing: -0.25,
-                        color: isvalid
+                        color: isvalid && passwordvalid
                             ? AppColors.DARK_BLUE800
                             : AppColors.GREY400),
                   ),
@@ -440,6 +560,18 @@ class _LoginScreenState extends State<LoginScreen> {
         password.clear();
         sharedPreferences1.clear();
       }
+    });
+  }
+
+  void _requestFocus1() {
+    setState(() {
+      FocusScope.of(context).requestFocus(_focusNode1);
+    });
+  }
+
+  void _requestFocus2() {
+    setState(() {
+      FocusScope.of(context).requestFocus(_focusNode2);
     });
   }
 }

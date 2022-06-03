@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:repocket/SignUp_and_Login_Screen/login.dart';
 
 import '../../Service.dart';
+import '../Firebase/googlesign.dart';
+import '../Home/home.dart';
 import '../Service.dart';
 import '../SignUp_and_Login_Screen/SignUp_Screen.dart';
 
@@ -57,33 +60,49 @@ class _Launch_Screen3State extends State<Launch_Screen3> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Container(
-                height: 52,
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          offset: const Offset(0, 2),
-                          blurRadius: 2,
-                          color: const Color(0xFF101828).withOpacity(0.05))
+              child: InkWell(
+                onTap: () async {
+                  User? user =
+                      (await Authentication.googleSignIn(context: context))
+                          as User?;
+                  if (user != null) {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => Home(),
+                      ),
+                    );
+                  } else {
+                    CircularProgressIndicator();
+                  }
+                },
+                child: Container(
+                  height: 52,
+                  decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            offset: const Offset(0, 2),
+                            blurRadius: 2,
+                            color: const Color(0xFF101828).withOpacity(0.05))
+                      ],
+                      color: AppColors.WHITE,
+                      borderRadius: BorderRadius.circular(8)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('assest/ic_google.png'),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      const Text(
+                        "Sign up with Google",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontFamily: Appfont.SpaceGrotesk_medium,
+                            fontSize: 15,
+                            color: AppColors.GREY700),
+                      ),
                     ],
-                    color: AppColors.WHITE,
-                    borderRadius: BorderRadius.circular(8)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset('assest/ic_google.png'),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    const Text(
-                      "Sign up with Google",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontFamily: Appfont.SpaceGrotesk_medium,
-                          fontSize: 15,
-                          color: AppColors.GREY700),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),

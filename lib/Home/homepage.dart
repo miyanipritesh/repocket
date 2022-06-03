@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -9,13 +10,18 @@ import 'Notification/notification.dart';
 import 'Withdraw_Screen/withdraw.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  User? user = FirebaseAuth.instance.currentUser;
+  get user1 => FirebaseAuth.instance.currentUser;
+
   int currentchart = 0;
   late SelectionBehavior _selectionBehavior;
   late TooltipBehavior _tooltipBehavior;
@@ -126,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(6),
                                   color: AppColors.GREEN),
                             ),
-                            const Text(
+                            Text(
                               'ON',
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
@@ -192,8 +198,8 @@ class _HomePageState extends State<HomePage> {
                               const SizedBox(
                                 width: 4,
                               ),
-                              const Text(
-                                'Balance',
+                              Text(
+                                "Balance",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontFamily: Appfont.SpaceGrotesk_medium,

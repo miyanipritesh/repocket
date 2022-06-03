@@ -7,21 +7,23 @@ import '../Setting/setting.dart';
 import 'homepage.dart';
 
 int index1 = 0;
-List screen = [
-  const HomePage(),
-  const ReferScrren(),
-  const Devices(),
-  const SettingScreeen(),
-];
 
 class Home extends StatefulWidget {
-  const Home({Key? key, user}) : super(key: key);
+  const Home({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  List screen = [
+    HomePage(),
+    const ReferScrren(),
+    const Devices(),
+    const SettingScreeen(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

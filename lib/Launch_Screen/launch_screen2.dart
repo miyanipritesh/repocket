@@ -79,26 +79,19 @@ class _LaunchScreen2State extends State<LaunchScreen2> {
                     padding: const EdgeInsets.only(left: 20),
                     child: SizedBox(
                       height: 442,
-                      child: Scrollbar(
-                        isAlwaysShown: true,
-                        thickness: 7,
-                        trackVisibility: true,
-                        showTrackOnHover: true,
-                        controller: _controllerOne,
-                        child: const SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
-                          child: Text(
-                            AppString.TERM,
-                            strutStyle: StrutStyle(
-                              forceStrutHeight: true,
-                            ),
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontFamily: Appfont.Mukta,
-                                fontSize: 15,
-                                letterSpacing: -0.15,
-                                color: AppColors.WHITE),
+                      child: const SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Text(
+                          AppString.TERM,
+                          strutStyle: StrutStyle(
+                            forceStrutHeight: true,
                           ),
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontFamily: Appfont.Mukta,
+                              fontSize: 15,
+                              letterSpacing: -0.15,
+                              color: AppColors.WHITE),
                         ),
                       ),
                     ),

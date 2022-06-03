@@ -15,8 +15,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   final valid = GlobalKey();
   TextEditingController Resetpass = TextEditingController();
   bool isvalid = false;
+  late FocusNode _focusNode;
   @override
   void initState() {
+    setState(() {
+      _focusNode = FocusNode();
+    });
     Resetpass.addListener(() {
       setState(() {
         if (EmailValidator.validate(Resetpass.text)) {
@@ -42,9 +46,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           const SizedBox(
             height: 26,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(right: 345),
-            child: Icon(Icons.arrow_back),
+            child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(Icons.arrow_back)),
           ),
           const SizedBox(
             height: 28,
@@ -101,11 +109,35 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             child: Container(
                 height: 43,
                 decoration: BoxDecoration(
-                    border: Border.all(width: 1, color: AppColors.GREY300),
+                    boxShadow: _focusNode.hasFocus
+                        ? isvalid
+                            ? [
+                                const BoxShadow(
+                                    offset: Offset(0, 0),
+                                    spreadRadius: 2,
+                                    color: Color.fromRGBO(115, 237, 190, 0.3)),
+                              ]
+                            : [
+                                BoxShadow(
+                                    offset: Offset(0, 0),
+                                    spreadRadius: 2,
+                                    color: Color.fromRGBO(225, 166, 165, 0.5)),
+                              ]
+                        : null,
+                    border: Border.all(
+                      width: 1,
+                      color: _focusNode.hasFocus
+                          ? isvalid
+                              ? AppColors.GREEN
+                              : Colors.red
+                          : AppColors.GREY400,
+                    ),
                     borderRadius: BorderRadius.circular(5)),
                 child: Form(
                   key: valid,
                   child: TextFormField(
+                    focusNode: _focusNode,
+                    onTap: _requstfocus,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: Resetpass,
                     onSaved: (value) {
@@ -119,8 +151,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     },
                     textAlignVertical: TextAlignVertical.bottom,
                     decoration: InputDecoration(
-                        prefixIcon:
-                            const ImageIcon(AssetImage('assest/ic_mail.png')),
+                        prefixIcon: const ImageIcon(
+                            AssetImage('assest/ic_mail.png'),
+                            color: AppColors.GREY400),
                         hintText: 'olivia@email.com',
                         hintStyle: const TextStyle(
                             fontSize: 15,
@@ -128,7 +161,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             fontWeight: FontWeight.w400,
                             letterSpacing: -0.15,
                             color: AppColors.GREY400),
-                        fillColor: AppColors.GREY300.withOpacity(0.01),
+                        fillColor: AppColors.WHITE,
                         filled: true,
                         border: OutlineInputBorder(
                             borderSide: BorderSide.none,
@@ -161,8 +194,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   onPressed: isvalid
                       ? () {
                           AuthenticationHelper().resetPassord(
-                              email: Resetpass.text.trim(), context: context);
-                          print('--------------------${Resetpass.text.trim()}');
+                              email2: Resetpass.value.text, context: context);
+                          print('--------------------${Resetpass.value.text}');
                         }
                       : null,
                   child: Text(
@@ -183,5 +216,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         ],
       ),
     );
+  }
+
+  _requstfocus() {
+    setState(() {
+      FocusScope.of(context).requestFocus(_focusNode);
+    });
   }
 }

@@ -10,7 +10,7 @@ import '../SignUp_and_Login_Screen/SignUp_Screen.dart';
 class AuthenticationHelper {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  get user => _auth.currentUser;
+  get user1 => _auth.currentUser;
 
 //SIGN UP METHOD
   Future signUp(
@@ -52,13 +52,14 @@ class AuthenticationHelper {
     await _auth.signOut();
   }
 
-  //FORGETPASSWORD METHOD
+  //FORGET PASSWORD METHOD
   Future resetPassord(
-      {required String email, required BuildContext context}) async {
+      {required String email2, required BuildContext context}) async {
     await _auth
-        .sendPasswordResetEmail(email: email)
+        .sendPasswordResetEmail(email: email2)
         .then((value) => {
               Fluttertoast.showToast(msg: "Reset link show in email"),
+              /*  print("============================$email2"),*/
               Navigator.pop(context)
             })
         .catchError((e) {
@@ -69,18 +70,16 @@ class AuthenticationHelper {
   Postdatatofirebase({required BuildContext context}) async {
     var firebaseFirestore = FirebaseFirestore.instance;
     UserModel usermodel =
-        UserModel(email: user.email, firstName: name.text, uid: user.uid);
+        UserModel(email: user1.email, firstName: name.text, uid: user1.uid);
 
     await firebaseFirestore
         .collection('user')
-        .doc(user.uid)
+        .doc(user1.uid)
         .set(usermodel.toMap());
     Fluttertoast.showToast(msg: 'Create Account SuccessFully');
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (context) => Home(
-          user: usermodel,
-        ),
+        builder: (context) => Home(),
       ),
     );
   }

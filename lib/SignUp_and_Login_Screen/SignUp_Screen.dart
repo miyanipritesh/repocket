@@ -1,15 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:repocket/Firebase/googlesign.dart';
 import 'package:repocket/Home/home.dart';
 import 'package:repocket/Service.dart';
 
 import '../Firebase/authnticationHelper.dart';
-import '../Firebase/user_model.dart';
 import 'login.dart';
 
 TextEditingController name = TextEditingController();
@@ -22,39 +19,12 @@ class SignUpSCreen extends StatefulWidget {
 }
 
 class _SignUpSCreenState extends State<SignUpSCreen> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  Postdatatofirebase() async {
-    var firebaseFirestore = FirebaseFirestore.instance;
-    UserModel usermodel =
-        UserModel(email: user.email, firstName: name.text, uid: user.uid);
-
-    await firebaseFirestore
-        .collection('user')
-        .doc(user.uid)
-        .set(usermodel.toMap());
-    Fluttertoast.showToast(msg: 'Create Account SuccessFully');
-    Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(
-          builder: (context) => Home(),
-        ),
-        (route) => false);
-  }
-
-  get user => _auth.currentUser;
-  Future signUp({required String email, required String password}) async =>
-      await _auth
-          .createUserWithEmailAndPassword(
-            email: email,
-            password: password,
-          )
-          .then((value) => {Postdatatofirebase()})
-          .catchError((e) {
-        Fluttertoast.showToast(msg: e!.message);
-      });
   late FocusNode _focusNode;
   late FocusNode _focusNode1;
   late FocusNode _focusNode2;
   bool isvisible = true;
+  bool isvalid1 = true;
+  bool passwordvalid = true;
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   String? password1;
@@ -64,9 +34,39 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
     super.initState();
     setState(() {
       _focusNode1 = FocusNode();
+      _focusNode = FocusNode();
+      _focusNode2 = FocusNode();
     });
-    _focusNode = FocusNode();
-    _focusNode2 = FocusNode();
+    email.addListener(() {
+      setState(() {
+        if (EmailValidator.validate(email.text)) {
+          setState(() {
+            isvalid1 = true;
+          });
+        } else {
+          setState(() {
+            isvalid1 = false;
+          });
+        }
+      });
+    });
+    setState(() {
+      _focusNode1 = FocusNode();
+      _focusNode2 = FocusNode();
+    });
+    password.addListener(() {
+      setState(() {
+        if (password.value.text.length <= 8) {
+          setState(() {
+            passwordvalid = false;
+          });
+        } else {
+          setState(() {
+            passwordvalid = true;
+          });
+        }
+      });
+    });
   }
 
   @override
@@ -222,28 +222,29 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
                   decoration: BoxDecoration(
                       color: AppColors.WHITE,
                       boxShadow: _focusNode1.hasFocus
-                          ? !EmailValidator.validate(email.value.text)
+                          ? isvalid1
                               ? [
                                   BoxShadow(
                                       offset: Offset(0, 0),
-                                      spreadRadius: 4,
+                                      spreadRadius: 2,
                                       color:
                                           Color.fromRGBO(115, 237, 190, 0.3)),
                                 ]
                               : [
                                   BoxShadow(
                                       offset: Offset(0, 0),
-                                      spreadRadius: 4,
+                                      spreadRadius: 2,
                                       color:
                                           Color.fromRGBO(225, 166, 165, 0.5)),
                                 ]
                           : null,
                       border: Border.all(
+                        width: 1,
                         color: _focusNode1.hasFocus
-                            ? !EmailValidator.validate(email.value.text)
+                            ? isvalid1
                                 ? AppColors.GREEN
                                 : Colors.red
-                            : AppColors.GREY300,
+                            : AppColors.GREY400,
                       ),
                       borderRadius: BorderRadius.circular(5)),
                   child: TextFormField(
@@ -311,28 +312,34 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
                   decoration: BoxDecoration(
                       color: AppColors.WHITE,
                       boxShadow: _focusNode2.hasFocus
-                          ? [
-                              const BoxShadow(
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 4,
-                                  color: Color.fromRGBO(115, 237, 190, 0.3)),
-                            ]
+                          ? passwordvalid
+                              ? [
+                                  const BoxShadow(
+                                      offset: Offset(0, 0),
+                                      spreadRadius: 2,
+                                      color:
+                                          Color.fromRGBO(115, 237, 190, 0.3)),
+                                ]
+                              : [
+                                  BoxShadow(
+                                      offset: Offset(0, 0),
+                                      spreadRadius: 2,
+                                      color:
+                                          Color.fromRGBO(225, 166, 165, 0.5)),
+                                ]
                           : null,
                       border: Border.all(
                         width: 1,
                         color: _focusNode2.hasFocus
-                            ? AppColors.GREEN
-                            : AppColors.GREY300,
+                            ? passwordvalid
+                                ? AppColors.GREEN
+                                : Colors.red
+                            : AppColors.GREY400,
                       ),
                       borderRadius: BorderRadius.circular(5)),
                   child: TextFormField(
                     obscureText: isvisible,
                     textInputAction: TextInputAction.done,
-                    /*validator: (password) {
-                      if (password == null && password!.length < 7) {
-                        return 'dsfdfsgfgf';
-                      }
-                    },*/
                     focusNode: _focusNode2,
                     onTap: _requestFocus2,
                     controller: password,
@@ -342,29 +349,30 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
                         password1 = value!;
                       });
                     },
-                    /*onChanged: (value) {
-                      password1 = value;
-                    },*/
                     textAlignVertical: TextAlignVertical.bottom,
                     decoration: InputDecoration(
-                        prefixIcon:
-                            const ImageIcon(AssetImage('assest/ic_lock.png')),
+                        prefixIcon: const ImageIcon(
+                          AssetImage('assest/ic_lock.png'),
+                          color: AppColors.GREY400,
+                        ),
                         hintText: '●●●●●●●●',
                         hintStyle: const TextStyle(
                             fontSize: 15,
                             fontFamily: Appfont.Mukta,
                             fontWeight: FontWeight.w400,
                             letterSpacing: -0.15,
-                            color: AppColors.GREY400),
+                            color: AppColors.GREY500),
                         suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                isvisible = !isvisible;
-                              });
-                            },
-                            icon: Icon(isvisible
-                                ? Icons.visibility
-                                : Icons.visibility_off)),
+                          onPressed: () {
+                            setState(() {
+                              isvisible = !isvisible;
+                            });
+                          },
+                          icon: Icon(isvisible
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                          color: AppColors.GREY400,
+                        ),
                         fillColor: AppColors.WHITE,
                         filled: true,
                         border: OutlineInputBorder(
@@ -376,7 +384,7 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
             const SizedBox(
               height: 6,
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
                 'Must be at least 8 characters',
@@ -385,7 +393,7 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
                     fontFamily: Appfont.Mukta_medium,
                     fontWeight: FontWeight.w500,
                     letterSpacing: -0.15,
-                    color: AppColors.GREY800),
+                    color: passwordvalid ? AppColors.GREY800 : Colors.red),
               ),
             ),
             const SizedBox(
@@ -410,14 +418,18 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
                 child: ElevatedButton(
                   style: ButtonStyle(
                       elevation: MaterialStateProperty.all(0),
-                      backgroundColor:
-                          MaterialStateProperty.all(Color(0xFFF3F4F6))),
-                  onPressed: () {
-                    AuthenticationHelper().signUp(
-                        email: email.text,
-                        password: password.text,
-                        context: context);
-                  },
+                      backgroundColor: MaterialStateProperty.all(
+                          passwordvalid && isvalid1
+                              ? AppColors.GREEN
+                              : Color(0xFFF3F4F6))),
+                  onPressed: passwordvalid && isvalid1
+                      ? () {
+                          AuthenticationHelper().signUp(
+                              email: email.text,
+                              password: password.text,
+                              context: context);
+                        }
+                      : null,
                   child: Text(
                     "Sign up",
                     style: TextStyle(
@@ -425,7 +437,9 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
                         fontFamily: Appfont.SpaceGrotesk_medium,
                         fontSize: 15,
                         letterSpacing: -0.25,
-                        color: AppColors.GREY400),
+                        color: passwordvalid && isvalid1
+                            ? AppColors.GREY800
+                            : AppColors.GREY400),
                   ),
                 ),
               ),
@@ -508,9 +522,7 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
                     if (user != null) {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => Home(
-                            user: user,
-                          ),
+                          builder: (context) => Home(),
                         ),
                       );
                     } else {
