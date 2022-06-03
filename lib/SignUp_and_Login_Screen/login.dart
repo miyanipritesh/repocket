@@ -129,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 InkWell(
                   onTap: () async {
                     User? user =
-                        (await Authentication.googleSignIn(context: context))
+                        await Authentication.googleSignIn(context: context)
                             as User?;
                     if (user != null) {
                       Navigator.of(context).pushReplacement(

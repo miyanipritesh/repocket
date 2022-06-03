@@ -59,7 +59,6 @@ class AuthenticationHelper {
         .sendPasswordResetEmail(email: email2)
         .then((value) => {
               Fluttertoast.showToast(msg: "Reset link show in email"),
-              /*  print("============================$email2"),*/
               Navigator.pop(context)
             })
         .catchError((e) {
