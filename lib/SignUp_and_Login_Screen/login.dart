@@ -10,6 +10,8 @@ import '../Home/home.dart';
 import '../Service.dart';
 import 'SignUp_Screen.dart';
 
+TextEditingController password = TextEditingController();
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 

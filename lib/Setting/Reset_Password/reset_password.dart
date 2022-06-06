@@ -1,7 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:repocket/Setting/Reset_Password/reset_password_screen2.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:repocket/SignUp_and_Login_Screen/login.dart';
 
-import '../../Home/home.dart';
 import '../../Service.dart';
 
 class ResetPassword extends StatefulWidget {
@@ -12,169 +13,378 @@ class ResetPassword extends StatefulWidget {
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
+  final valid = GlobalKey();
+  TextEditingController Resetpass = TextEditingController();
+  TextEditingController Resetpass1 = TextEditingController();
+  bool isvalid = true;
+  bool isvalid1 = false;
+  bool isvisible = false;
+  var actionCode = ('oobCode');
+  late FocusNode _focusNode;
+  late FocusNode _focusNode1;
+  @override
+  void initState() {
+    setState(() {
+      _focusNode = FocusNode();
+      _focusNode1 = FocusNode();
+    });
+    Resetpass.addListener(() {
+      setState(() {
+        if (Resetpass.value.text.length <= 8) {
+          setState(() {
+            isvalid = false;
+          });
+        } else
+          setState(() {
+            isvalid = true;
+          });
+        ;
+      });
+    });
+    Resetpass1.addListener(() {
+      setState(() {
+        if (Resetpass1.value.text == Resetpass.value.text) {
+          setState(() {
+            isvalid1 = true;
+          });
+        } else
+          setState(() {
+            isvalid1 = false;
+          });
+        ;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFCFCFC),
-      body: SafeArea(
-        child: ListView(
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                const SizedBox(
-                  width: 20,
-                ),
-                InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Image.asset('assest/ic_back.png')),
-                const SizedBox(
-                  width: 105,
-                ),
-                const Text(
-                  'Reset password',
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: Appfont.SpaceGrotesk_medium,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.GREY700,
-                      letterSpacing: -0.25),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 13,
-            ),
-            const Divider(
-              color: Color(0xFFE8E8E8),
-              thickness: 2,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                "We ll send you reset instructions via\nemail.",
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: Appfont.SpaceGrotesk_medium,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.GREY800,
-                    letterSpacing: -0.25),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Container(
-                  height: 43,
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: AppColors.GREY300),
-                      borderRadius: BorderRadius.circular(5)),
-                  child: TextField(
-                    textAlignVertical: TextAlignVertical.bottom,
-                    decoration: InputDecoration(
-                        prefixIcon:
-                            const ImageIcon(AssetImage('assest/ic_mail.png')),
-                        hintText: 'olivia@email.com',
-                        hintStyle: const TextStyle(
-                            fontSize: 15,
-                            fontFamily: Appfont.Mukta,
-                            fontWeight: FontWeight.w400,
-                            letterSpacing: -0.15,
-                            color: AppColors.GREY400),
-                        fillColor: AppColors.GREY300.withOpacity(0.01),
-                        filled: true,
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(8))),
-                  )),
-            ),
-            const SizedBox(
-              height: 440,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: InkWell(
+      body: ListView(
+        children: [
+          const SizedBox(
+            height: 26,
+          ),
+          Padding(
+            padding: EdgeInsets.only(right: 345),
+            child: InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ResetPassword2(),
-                      ));
+                  Navigator.pop(context);
                 },
-                child: Container(
-                  height: 52,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            offset: const Offset(0, 2),
-                            blurRadius: 2,
-                            color: const Color(0xFFF3F4F6).withOpacity(0.05))
-                      ],
-                      color: AppColors.GREEN,
-                      borderRadius: BorderRadius.circular(8)),
-                  child: const Center(
-                    child: Text(
-                      "Reset password",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontFamily: Appfont.SpaceGrotesk_medium,
-                          fontSize: 15,
-                          letterSpacing: -0.25,
-                          color: AppColors.DARK_BLUE800),
-                    ),
-                  ),
-                ),
-              ),
+                child: Icon(Icons.arrow_back)),
+          ),
+          const SizedBox(
+            height: 28,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 15),
+            child: Text(
+              'Reset password',
+              style: TextStyle(
+                  fontSize: 24,
+                  fontFamily: Appfont.SpaceGrotesk,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: -0.25,
+                  color: AppColors.DARK_BLUE800),
             ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: Container(
-        height: 91,
-        decoration: BoxDecoration(border: Border.all(color: AppColors.GREY300)),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          elevation: 2,
-          currentIndex: index1,
-          onTap: (index) {
-            setState(() {
-              index1 = index;
-            });
-          },
-          backgroundColor: Colors.white,
-          unselectedItemColor: AppColors.GREY400,
-          selectedItemColor: AppColors.DARK_BLUE800,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          items: const [
-            BottomNavigationBarItem(
-                icon: ImageIcon(
-                  AssetImage('assest/ic_icon1.png'),
-                  size: 20,
-                ),
-                label: 'Home'),
-            BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assest/ic_icon2.png')),
-                label: 'Referral'),
-            BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assest/ic_icon3.png')),
-                label: 'Devices'),
-            BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assest/ic_icon4.png')),
-                label: 'More'),
-          ],
-        ),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 15),
+            child: Text(
+              'Your new password must be different from the previous password',
+              style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: Appfont.SpaceGrotesk_Regular,
+                  fontWeight: FontWeight.w400,
+                  letterSpacing: -0.25,
+                  color: AppColors.GREY700),
+            ),
+          ),
+          const SizedBox(
+            height: 28,
+          ),
+          //------- Email---------//
+
+          const Padding(
+            padding: EdgeInsets.only(left: 15),
+            child: Text(
+              'Password',
+              style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: Appfont.Mukta_medium,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: -0.15,
+                  color: AppColors.GREY700),
+            ),
+          ),
+          const SizedBox(
+            height: 6,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Container(
+                height: 43,
+                decoration: BoxDecoration(
+                    boxShadow: _focusNode.hasFocus
+                        ? isvalid
+                            ? [
+                                BoxShadow(
+                                    offset: Offset(0, 0),
+                                    spreadRadius: 2,
+                                    color: Color.fromRGBO(115, 237, 190, 0.3)),
+                              ]
+                            : [
+                                BoxShadow(
+                                    offset: Offset(0, 0),
+                                    spreadRadius: 2,
+                                    color: Color.fromRGBO(225, 166, 165, 0.5)),
+                              ]
+                        : null,
+                    border: Border.all(
+                      width: 1,
+                      color: _focusNode.hasFocus
+                          ? isvalid
+                              ? AppColors.GREEN
+                              : Colors.red
+                          : AppColors.GREY400,
+                    ),
+                    borderRadius: BorderRadius.circular(5)),
+                child: TextFormField(
+                  focusNode: _focusNode,
+                  onTap: _requstfocus,
+                  controller: Resetpass,
+                  obscureText: isvisible,
+                  autofillHints: [AutofillHints.password],
+                  textAlignVertical: TextAlignVertical.bottom,
+                  decoration: InputDecoration(
+                      prefixIcon: const ImageIcon(
+                        AssetImage('assest/ic_lock.png'),
+                        color: AppColors.GREY400,
+                      ),
+                      hintText: '●●●●●●●●',
+                      hintStyle: const TextStyle(
+                          fontSize: 15,
+                          fontFamily: Appfont.Mukta,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: -0.15,
+                          color: AppColors.GREY400),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            isvisible = !isvisible;
+                          });
+                        },
+                        icon: Icon(isvisible
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                        color: AppColors.GREY400,
+                      ),
+                      fillColor: AppColors.WHITE,
+                      filled: true,
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(8))),
+                )),
+          ),
+          //------- password---------//
+          const SizedBox(
+            height: 6,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: Text(
+              'Must be at least 8 characters',
+              style: TextStyle(
+                  fontSize: 14,
+                  fontFamily: Appfont.Mukta_medium,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: -0.15,
+                  color: _focusNode.hasFocus
+                      ? isvalid
+                          ? AppColors.GREY500
+                          : Colors.red
+                      : AppColors.GREY500),
+            ),
+          ),
+
+          SizedBox(
+            height: 10,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 15),
+            child: Text(
+              'Confirm password',
+              style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: Appfont.Mukta_medium,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: -0.15,
+                  color: AppColors.GREY700),
+            ),
+          ),
+          const SizedBox(
+            height: 6,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Container(
+                height: 43,
+                decoration: BoxDecoration(
+                    boxShadow: _focusNode1.hasFocus
+                        ? isvalid1
+                            ? [
+                                const BoxShadow(
+                                    offset: Offset(0, 0),
+                                    spreadRadius: 2,
+                                    color: Color.fromRGBO(115, 237, 190, 0.3)),
+                              ]
+                            : [
+                                BoxShadow(
+                                    offset: Offset(0, 0),
+                                    spreadRadius: 2,
+                                    color: Color.fromRGBO(225, 166, 165, 0.5)),
+                              ]
+                        : null,
+                    border: Border.all(
+                      width: 1,
+                      color: _focusNode1.hasFocus
+                          ? isvalid1
+                              ? AppColors.GREEN
+                              : Colors.red
+                          : AppColors.GREY400,
+                    ),
+                    borderRadius: BorderRadius.circular(5)),
+                child: TextFormField(
+                  focusNode: _focusNode1,
+                  onTap: _requstfocus1,
+                  controller: Resetpass1,
+                  obscureText: isvisible,
+                  autofillHints: [AutofillHints.password],
+                  textAlignVertical: TextAlignVertical.bottom,
+                  decoration: InputDecoration(
+                      prefixIcon: const ImageIcon(
+                        AssetImage('assest/ic_lock.png'),
+                        color: AppColors.GREY400,
+                      ),
+                      hintText: '●●●●●●●●',
+                      hintStyle: const TextStyle(
+                          fontSize: 15,
+                          fontFamily: Appfont.Mukta,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: -0.15,
+                          color: AppColors.GREY400),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            isvisible = !isvisible;
+                          });
+                        },
+                        icon: Icon(isvisible
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                        color: AppColors.GREY400,
+                      ),
+                      fillColor: AppColors.WHITE,
+                      filled: true,
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(8))),
+                )),
+          ),
+          //------- password---------//
+          const SizedBox(
+            height: 6,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: Text(
+              'Both passwords must match',
+              style: TextStyle(
+                  fontSize: 14,
+                  fontFamily: Appfont.Mukta_medium,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: -0.15,
+                  color: _focusNode1.hasFocus
+                      ? isvalid1
+                          ? AppColors.GREY500
+                          : Colors.red
+                      : AppColors.GREY500),
+            ),
+          ),
+
+          //------- Email---------//
+
+          //------- sign in button---------//
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Container(
+                decoration: BoxDecoration(boxShadow: [
+                  BoxShadow(
+                      offset: Offset(0, 2),
+                      blurRadius: 2,
+                      color: Color(0xFFF3F4F6).withOpacity(0.05))
+                ], borderRadius: BorderRadius.circular(8)),
+                height: 52,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(0),
+                      backgroundColor: MaterialStateProperty.all(
+                          isvalid && isvalid1
+                              ? AppColors.GREEN
+                              : AppColors.GREY100)),
+                  onPressed: isvalid && isvalid1
+                      ? () async {
+                          var user = FirebaseAuth.instance.currentUser;
+                          await user
+                              ?.updatePassword(Resetpass1.text)
+                              .then((value) => {
+                                    Fluttertoast.showToast(
+                                        msg: 'Reset Password Succesfully'),
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => LoginScreen(),
+                                        ))
+                                  })
+                              .catchError((e) {
+                            Fluttertoast.showToast(msg: e!.message);
+                          });
+                        }
+                      : null,
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontFamily: Appfont.SpaceGrotesk_medium,
+                        fontSize: 15,
+                        letterSpacing: -0.25,
+                        color: isvalid
+                            ? AppColors.DARK_BLUE800
+                            : AppColors.GREY400),
+                  ),
+                )),
+          )
+
+          //------- sign in button---------//
+        ],
       ),
     );
+  }
+
+  _requstfocus() {
+    setState(() {
+      FocusScope.of(context).requestFocus(_focusNode);
+    });
+  }
+
+  _requstfocus1() {
+    setState(() {
+      FocusScope.of(context).requestFocus(_focusNode1);
+    });
   }
 }

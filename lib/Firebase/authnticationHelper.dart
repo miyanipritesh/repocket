@@ -56,7 +56,7 @@ class AuthenticationHelper {
   Future resetPassord(
       {required String email2, required BuildContext context}) async {
     await _auth
-        .sendPasswordResetEmail(email: email2)
+        .sendPasswordResetEmail(email: 'miyanipritesh1018@gmail.com')
         .then((value) => {
               Fluttertoast.showToast(msg: "Reset link show in email"),
               Navigator.pop(context)
