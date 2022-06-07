@@ -300,7 +300,7 @@ class _HomePageState extends State<HomePage> {
                             'Bandwidth earnings:',
                             style: TextStyle(
                                 fontWeight: FontWeight.w400,
-                                fontFamily: Appfont.Mukta,
+                                fontFamily: Appfont.SpaceGrotesk,
                                 fontSize: 15.5,
                                 letterSpacing: -0.15,
                                 color: AppColors.GREY500),
@@ -309,7 +309,7 @@ class _HomePageState extends State<HomePage> {
                             '\$10.0221',
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                fontFamily: Appfont.Mukta_medium,
+                                fontFamily: Appfont.SpaceGrotesk,
                                 fontSize: 16,
                                 letterSpacing: 1,
                                 color: AppColors.GREY700),
@@ -357,7 +357,7 @@ class _HomePageState extends State<HomePage> {
                               ));
                         },
                         child: Container(
-                          height: 83,
+                          height: MediaQuery.of(context).size.height * 0.1,
                           decoration: BoxDecoration(
                               color: const Color(0xFF004267),
                               borderRadius: BorderRadius.circular(8)),
@@ -407,12 +407,12 @@ class _HomePageState extends State<HomePage> {
                                   )
                                 ],
                               ),
-                              const SizedBox(
-                                height: 19,
-                              ),
+                              SizedBox(height: 30),
                               LinearPercentIndicator(
                                 percent: 0.80,
-                                width: 316,
+                                width: 349,
+                                addAutomaticKeepAlive: true,
+                                alignment: MainAxisAlignment.center,
                                 linearGradient: const LinearGradient(colors: [
                                   Color(0xFF0FA3B1),
                                   Color(0xFF01DE89),

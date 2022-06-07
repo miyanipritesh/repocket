@@ -51,7 +51,7 @@ class _LaunchScreen2State extends State<LaunchScreen2> {
               ),
             ),
             SizedBox(
-              height: 600,
+              height: MediaQuery.of(context).size.height * 0.7,
               width: 323,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +76,7 @@ class _LaunchScreen2State extends State<LaunchScreen2> {
                   Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: SizedBox(
-                      height: MediaQuery.of(context).size.height / 1.9,
+                      height: MediaQuery.of(context).size.height * 0.55,
                       child: const SingleChildScrollView(
                         scrollDirection: Axis.vertical,
                         child: Text(

@@ -20,9 +20,9 @@ class _Launch_Screen3State extends State<Launch_Screen3> {
     return Scaffold(
       extendBody: true,
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assest/ic_bg.png'), fit: BoxFit.fitHeight)),
+                image: AssetImage('assest/ic_bg.png'), fit: BoxFit.fill)),
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: [

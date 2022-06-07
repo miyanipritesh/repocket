@@ -19,7 +19,7 @@ class _PlashScreenState extends State<PlashScreen> {
   void initState() {
     super.initState();
     Timer(
-        const Duration(seconds: 3),
+        const Duration(seconds: 2),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) => StreamBuilder(
                   stream: FirebaseAuth.instance.authStateChanges(),

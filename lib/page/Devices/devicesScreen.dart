@@ -22,8 +22,8 @@ class _DevicesState extends State<Devices> {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
+              children: const [
+                Text(
                   'Devices',
                   style: TextStyle(
                       fontSize: 24,
@@ -32,7 +32,7 @@ class _DevicesState extends State<Devices> {
                       color: AppColors.GREY800,
                       letterSpacing: -0.25),
                 ),
-                const Text(
+                Text(
                   '3 devices',
                   style: TextStyle(
                       fontSize: 15.5,

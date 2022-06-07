@@ -91,18 +91,75 @@ class _ReferScrrenState extends State<ReferScrren> {
                 borderRadius: BorderRadius.circular(8),
                 color: AppColors.DARK_BLUE800),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "${data.y1}",
-                  style: const TextStyle(color: AppColors.WHITE),
+                const SizedBox(
+                  height: 8,
                 ),
-                Text(
-                  "${data.y2}",
-                  style: const TextStyle(color: AppColors.WHITE),
+                const Text(
+                  "\$0.9374",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontFamily: Appfont.SpaceGrotesk_medium,
+                      fontSize: 14,
+                      letterSpacing: 0.5,
+                      color: AppColors.WHITE),
                 ),
-                Text(
-                  "${data.y1 + data.y2}",
-                  style: const TextStyle(color: AppColors.WHITE),
+                const SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset('assest/ic_Color.png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "\$0.6532",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontFamily: Appfont.SpaceGrotesk_medium,
+                              fontSize: 10,
+                              letterSpacing: 0.5,
+                              color: AppColors.WHITE),
+                        ),
+                        const Text(
+                          "355.42",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontFamily: Appfont.SpaceGrotesk_medium,
+                              fontSize: 10,
+                              letterSpacing: 0.5,
+                              color: AppColors.GREY400),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset('assest/ic_color2.png'),
+                    const SizedBox(
+                      width: 6,
+                    ),
+                    const Text(
+                      "\$0.2842",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontFamily: Appfont.SpaceGrotesk_medium,
+                          fontSize: 10,
+                          letterSpacing: 0.5,
+                          color: AppColors.WHITE),
+                    ),
+                  ],
                 ),
               ],
             ),

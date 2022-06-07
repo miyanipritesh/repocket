@@ -47,29 +47,33 @@ class _LaunchScreen1State extends State<LaunchScreen1> {
                 const SizedBox(
                   width: 16,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Sell unused internet',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontFamily: Appfont.SpaceGrotesk,
-                          fontSize: 16,
-                          color: AppColors.GREEN),
-                    ),
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Text(
-                      'Start earning money on autopilot in 60\nseconds',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontFamily: Appfont.Mukta,
-                          fontSize: 15,
-                          color: AppColors.WHITE),
-                    ),
-                  ],
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        'Sell unused internet',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontFamily: Appfont.SpaceGrotesk,
+                            fontSize: 16,
+                            color: AppColors.GREEN),
+                      ),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Text(
+                        'Start earning money on autopilot in 60 seconds',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontFamily: Appfont.Mukta,
+                            fontSize: 15,
+                            color: AppColors.WHITE),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
@@ -85,29 +89,33 @@ class _LaunchScreen1State extends State<LaunchScreen1> {
                 const SizedBox(
                   width: 16,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Refer friends',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontFamily: Appfont.SpaceGrotesk,
-                          fontSize: 16,
-                          color: AppColors.GREEN),
-                    ),
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Text(
-                      'Get 5 for each user you signup and a\n10% recording commission on their\nearnings',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontFamily: Appfont.Mukta,
-                          fontSize: 15,
-                          color: AppColors.WHITE),
-                    ),
-                  ],
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        'Refer friends',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontFamily: Appfont.SpaceGrotesk,
+                            fontSize: 16,
+                            color: AppColors.GREEN),
+                      ),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Text(
+                        'Get 5 for each user you signup and a 10% recording commission on their earnings',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontFamily: Appfont.Mukta,
+                            fontSize: 15,
+                            color: AppColors.WHITE),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),

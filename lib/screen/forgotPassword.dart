@@ -46,14 +46,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           const SizedBox(
             height: 26,
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 345),
-            child: InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(Icons.arrow_back)),
-          ),
+          InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Align(
+                    alignment: Alignment.topLeft,
+                    child: const Icon(Icons.arrow_back)),
+              )),
           const SizedBox(
             height: 28,
           ),

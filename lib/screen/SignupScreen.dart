@@ -105,7 +105,10 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
                   },
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 19.0),
-                    child: Icon(Icons.arrow_back),
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: AppColors.GREY400,
+                    ),
                   )),
               const SizedBox(height: 25),
               Padding(
@@ -465,7 +468,7 @@ class _SignUpSCreenState extends State<SignUpSCreen> {
                       Center(
                         child: SizedBox(
                             height: MediaQuery.of(context).size.height * 0.05,
-                            width: 345,
+                            width: MediaQuery.of(context).size.width * 0.9,
                             child: Column(
                               children: [
                                 const Text(
