@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
-import 'Launch_Screen/plash_screen.dart';
+import 'package:repocket/screen/Launch%20Screen/plashScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
